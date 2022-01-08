@@ -1,0 +1,3 @@
+framer-motion module is for animations.
+Used react-particle-js for creating particles.
+Used normalize.css for consistent rendering of components.
