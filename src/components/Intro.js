@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Me from '../assets/Images/profile-img.png'
+import Me from '../assets/Images/profile-avatar.png'
 import { motion } from 'framer-motion'
 
 
@@ -32,19 +32,19 @@ const SubBox= styled.div`
     position: relative;
     display: flex;
 
-    .pic{
+    .avatar{
         position: absolute;
         bottom: 0;
         left: 50%;
         transform: translate(-50%, 0%);
-        width: 100%;
+        width: 110%;
         height: auto;
     }
 `
 
 const Text= styled.div`
     font-size: calc(1em + 1.3vw);
-    color: ${props => props.theme.body};
+    color: ${props => props.theme.text};
     padding: 2rem;
     cursor: pointer;
     display: flex;
@@ -52,7 +52,7 @@ const Text= styled.div`
     justify-content: space-evenly;
 
     &>*:last-child{
-        color: ${props =>`rgba(${props.theme.body}, 0.6)`};
+        color: ${props =>`rgba(${props.theme.text}, 0.6)`};
         font-size: calc (0.5rem + 1.5vw);
         font-weight: 300;
     }
@@ -65,7 +65,17 @@ const Intro = () => {
             initial= {{height: 0}}
             animate= {{height: '55vh'}}
             transition= {{ type: 'spring', duration: 2, delay: 1}}
-        >
+        >              
+            <SubBox >
+                <motion.div
+                    initial= {{opacity: 0}}
+                    animate= {{opacity: 1}}
+                    transition= {{ duration: 1, delay: 2}}
+                >
+                    <img className= "avatar" src= {Me} alt= "Profile Avatar" />
+                </motion.div>
+            </SubBox>   
+
             <SubBox>
                 <Text>
                     <h1>Hola !</h1>
@@ -73,17 +83,7 @@ const Intro = () => {
                     <h6>I'm an engineering student at Vellore Institute of Technology, Vellore. 
                         I am primarily a MERN Developer who loves coding anything.</h6>
                 </Text>
-            </SubBox>
-
-            <SubBox >
-                <motion.div
-                    initial= {{opacity: 0}}
-                    animate= {{opacity: 1}}
-                    transition= {{ duration: 1, delay: 2}}
-                >
-                    <img className= "pic" src= {Me} alt= "Profile Avatar" />
-                </motion.div>
-            </SubBox>
+            </SubBox>       
         </Box>
     )
 }
