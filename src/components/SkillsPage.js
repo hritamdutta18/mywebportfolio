@@ -1,13 +1,12 @@
 import React from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import { lightTheme } from './Themes'
-import { Coding, Developer } from './AllSvgs'
+import { Coding, Developer, Github } from './AllSvgs'
 import LogoComponent from '../subComponents/LogoComponent'
 import HomeButton from '../subComponents/HomeButton'
 import SocialIcons from '../subComponents/SocialIcons'
 import ParticleComponent from '../subComponents/ParticleComponent'
 import { HTML, CSS, Javascript, C, JAVA, Reactjs, Node, Express, MongoDB, VSCode, Bootstrap, Heroku } from '../subComponents/Skill-IconsSvgs'
-import { Github } from './AllSvgs'
 
 
 const Box= styled.div`
