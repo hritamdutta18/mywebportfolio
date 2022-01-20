@@ -7,13 +7,15 @@ import SocialIcons from '../subComponents/SocialIcons'
 import { Project } from '../data/ProjectData'
 import ProjectCard from '../subComponents/ProjectCard'
 import { HDLogo } from './AllSvgs'
+import BackgroundTitle from '../subComponents/BackgroundTitle'
 
 
 const Box= styled.div`
     background-color: ${props => props.theme.body};
     height: 400vh;
     position: relative;
-    overflow: hidden;
+    display: flex;
+    align-items: center;
 `
 const Main= styled.ul`
     position: fixed;
@@ -42,7 +44,7 @@ const ProjectPage = () => {
 
         const rotateLogo= () =>{
             ref.current.style.transform= `translateX(${-window.pageYOffset}px)`;
-            hdlogo.current.style.transform= `rotate(`+ -window.pageYOffset + 'deg)';
+            return (hdlogo.current.style.transform= 'rotate('+ -window.pageYOffset + 'deg)');
         }
 
         window.addEventListener('scroll', rotateLogo);
@@ -68,6 +70,8 @@ const ProjectPage = () => {
                 <Rotate ref= {hdlogo}>
                     <HDLogo width= {90} height= {90} fill= {DarkTheme.text}/>
                 </Rotate>
+
+                <BackgroundTitle text= "PROJECTS" top= '10%' right= '20%' />
             </Box>
         </ThemeProvider>
     )

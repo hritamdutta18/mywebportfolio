@@ -6,6 +6,7 @@ import HomeButton from '../subComponents/HomeButton'
 import SocialIcons from '../subComponents/SocialIcons'
 import ParticleComponent from '../subComponents/ParticleComponent'
 import rocket from '../assets/Images/rocket.png'
+import BackgroundTitle from '../subComponents/BackgroundTitle'
 
 
 const Box= styled.div`
@@ -125,6 +126,9 @@ const AboutPage = () => {
                         Feel free to reach out to me !
                     </div>
                 </Main>
+
+                <BackgroundTitle text= "ABOUT" bottom= '5%'  right= '5%' />
+
             </Box>
         </ThemeProvider>
     )

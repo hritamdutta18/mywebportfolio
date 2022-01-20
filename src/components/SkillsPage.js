@@ -7,6 +7,7 @@ import HomeButton from '../subComponents/HomeButton'
 import SocialIcons from '../subComponents/SocialIcons'
 import ParticleComponent from '../subComponents/ParticleComponent'
 import { HTML, CSS, Javascript, C, JAVA, Reactjs, Node, Express, MongoDB, VSCode, Bootstrap, Heroku } from '../subComponents/Skill-IconsSvgs'
+import BackgroundTitle from '../subComponents/BackgroundTitle'
 
 
 const Box= styled.div`
@@ -164,6 +165,9 @@ const SkillsPage = () => {
                             </ul>
                     </Description>
                 </Main>
+                
+                <BackgroundTitle text= "SKILLS" top= '80%'  left= '20%' />
+
             </Box>
         </ThemeProvider>
     )

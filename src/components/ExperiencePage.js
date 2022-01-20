@@ -7,6 +7,7 @@ import SocialIcons from '../subComponents/SocialIcons'
 import { Experience } from '../data/ExpData'
 import ExpComponent from './ExpComponent'
 import AnchorComponent from '../subComponents/AnchorComponent'
+import BackgroundTitle from '../subComponents/BackgroundTitle'
 
 
 const MainContainer= styled.div`
@@ -62,6 +63,9 @@ const ExperiencePage = () => {
                         }
                     </Grid>
                 </Center>
+                
+                <BackgroundTitle text= "EXPERIENCE" bottom= '3rem'  right= '5rem' />
+
             </Container>
         </MainContainer>
     )
