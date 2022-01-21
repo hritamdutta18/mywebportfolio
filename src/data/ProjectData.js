@@ -44,9 +44,8 @@ export const Project = [
         name:"Diary in C",
         description:"A simple personal diary application made using C language.",
         tags:["c","cmd"],        
-        demo:"https://github.com/hritamdutta18/diary",
-        github:"https://github.com/hritamdutta18/diary"
-        
+        demo:"",
+        github:"https://github.com/hritamdutta18/diary"        
     },  
     {
         id:7,
@@ -54,7 +53,6 @@ export const Project = [
         description:"This is my first ever website ! It enlists a few articles & precautions regarding COVID-19, along with a form for contact details. No back-end functionalities are included.",
         tags:["html","css","javascript"],        
         demo:"https://hritamdutta18.github.io/covid_prec/webpage",
-        github:"https://github.com/hritamdutta18/covid_prec"
-        
+        github:"https://github.com/hritamdutta18/covid_prec"        
     }  
 ] 
