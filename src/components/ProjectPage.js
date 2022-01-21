@@ -9,9 +9,20 @@ import ProjectCard from '../subComponents/ProjectCard'
 import { HDLogo } from './AllSvgs'
 import BackgroundTitle from '../subComponents/BackgroundTitle'
 import { motion } from 'framer-motion'
+import img from '../assets/Images/coder-img.jpg'
 
+
+const MainContainer= styled.div`
+    background-image: url(${img});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    width: 100vw;
+    height: auto;
+`
 const Box= styled.div`
-    background-color: ${props => props.theme.body};
+    background-color: ${props => `rgba(${props.theme.bodyRgba}, 0.8)`};
     height: 400vh;
     position: relative;
     display: flex;
@@ -67,25 +78,27 @@ const ProjectPage = () => {
 
     return (
         <ThemeProvider theme= {DarkTheme}>
-            <Box>
-                <LogoComponent theme= 'dark'/>
-                <SocialIcons theme= 'dark'/>
-                <HomeButton />
-                
-                <Main ref= {ref} variants={container} initial='hidden' animate= 'show'>
-                    {
-                        Project.map(p => 
-                            <ProjectCard key= {p.id} data= {p}/>
-                        )
-                    }
-                </Main>
+            <MainContainer>
+                <Box>
+                    <LogoComponent theme= 'dark'/>
+                    <SocialIcons theme= 'dark'/>
+                    <HomeButton />
+                    
+                    <Main ref= {ref} variants={container} initial='hidden' animate= 'show'>
+                        {
+                            Project.map(p => 
+                                <ProjectCard key= {p.id} data= {p}/>
+                            )
+                        }
+                    </Main>
 
-                <Rotate ref= {hdlogo}>
-                    <HDLogo width= {90} height= {90} fill= {DarkTheme.text}/>
-                </Rotate>
+                    <Rotate ref= {hdlogo}>
+                        <HDLogo width= {90} height= {90} fill= {DarkTheme.text}/>
+                    </Rotate>
 
-                <BackgroundTitle text= "PROJECTS" top= '10%' right= '20%' />
-            </Box>
+                    <BackgroundTitle text= "PROJECTS" top= '10%' left= '5%' />
+                </Box>
+            </MainContainer>            
         </ThemeProvider>
     )
 }
