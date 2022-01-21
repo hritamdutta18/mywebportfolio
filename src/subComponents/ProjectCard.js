@@ -3,6 +3,8 @@ import React from 'react'
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { Github } from '../components/AllSvgs';
+import { External } from '../components/AllSvgs';
+
 
 const Box= styled(motion.li)`
     width: 16rem;
@@ -49,24 +51,33 @@ const Tag= styled.span`
 `
 const Footer= styled.div`
     display: flex;
-    justify-content: space-between;
+    align-items: center;
 `
 const Link= styled(NavLink)`
     background-color: ${props => props.theme.body};
     color: ${props => props.theme.text};
     text-decoration: none;
-    padding: 0.5rem calc(2rem + 2vw);
+    padding: 0.5rem calc(2rem + 1vw);
     border-radius: 0 0 0 50px;
     font-size: calc(1em + 0.5vw);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 
     ${Box}:hover &{
         background-color: ${props => props.theme.text};
         color: ${props => props.theme.body};
+        fill: ${props => props.theme.body};
+    }
+    
+    .ext{
+        margin-left: 0.8rem;
     }
 `
 const Git= styled(NavLink)`
     color: inherit;
     text-decoration: none;
+    height: fit-content;
 
     ${Box}:hover &{
         &>*{
@@ -105,11 +116,16 @@ const ProjectCard = (props) => {
                     })
                 }
             </Tags>
-            <Footer>
-                <Link to= {{pathname: `${demo}`}} target="_blank">
-                    Visit
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" class="fill-current ml-1" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><polyline points="216 100 215.992 40.008 156 40" fill="none" stroke-linecap="round" class="stroke-current" stroke-linejoin="round" stroke-width="16"></polyline><line x1="143.9714" y1="112.0286" x2="215.9714" y2="40.0286" fill="none" class="stroke-current" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M184,144v64a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8h64" fill="none" class="stroke-current" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>
-                </Link>
+            <Footer style={{ justifyContent: demo === "" ? 'end' : 'space-between' }}>
+                {
+                    demo === "" ?
+                    <></>
+                    :                    
+                    <Link to= {{pathname: `${demo}`}} target="_blank">
+                        Visit
+                        <External className="ext" fill="currentColor" />
+                    </Link>
+                }
                 <Git to= {{pathname: `${github}`}} target="_blank">
                     <Github width= {30} height= {30} />
                 </Git>
