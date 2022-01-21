@@ -1,9 +1,10 @@
+import { motion } from 'framer-motion';
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { Github } from '../components/AllSvgs';
 
-const Box= styled.li`
+const Box= styled(motion.li)`
     width: 16rem;
     height: 40vh;
     background-color: ${props => props.theme.text};
@@ -30,6 +31,7 @@ const Description= styled.h2`
     font-size: calc(0.8em + 0.3vw);
     font-family: 'Karla', sans-serif;
     font-wight: 500;
+    text-align: justify;
 `
 const Tags= styled.div`
     border-top: 2px solid ${props => props.theme.body};
@@ -73,11 +75,27 @@ const Git= styled(NavLink)`
     }
 `
 
+// Framer-motion Configurations
+const Item= {
+    hidden:{
+        scale: 0
+    },
+    show:{
+        scale: 1,
+        transition:{
+            type: 'spring',
+            duration: 0.5
+        }
+    }
+}
+
+
 const ProjectCard = (props) => {
 
     const { id, name, description, tags, demo, github }= props.data;
+
     return (
-        <Box key= {id}>
+        <Box key= {id} variants={Item}  >
             <Title>{name}</Title>
             <Description>{description}</Description>
             <Tags>

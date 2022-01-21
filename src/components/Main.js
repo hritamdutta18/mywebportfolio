@@ -143,47 +143,94 @@ const Main = () => {
 
                 <Contact target= "_blank" to= {{pathname: "mailto:hritamloyola10@gmail.com"}}>
                     <motion.h2
+                        initial= {{
+                            y: -200,
+                            transition: { type: 'spring', duration: 1.5, delay: 1 }
+                        }}
+                        animate= {{
+                            y: 0,
+                            transition: { type: 'spring', duration: 1.5, delay: 1 }
+                        }}
                         whileHover={{scale: 1.1}}
                         whileTap={{ scale: 0.9 }}
                     >
                         Email me !
                     </motion.h2>
                 </Contact>
+
                 <Experience to= "/experience" >
                     <motion.h2
+                        initial= {{
+                            y: -200,
+                            transition: { type: 'spring', duration: 1.5, delay: 1 }
+                        }}
+                        animate= {{
+                            y: 0,
+                            transition: { type: 'spring', duration: 1.5, delay: 1 }
+                        }}
                         whileHover={{scale: 1.1}}
                         whileTap={{ scale: 0.9 }}
                     >
                         Experience
                     </motion.h2>
                 </Experience>
+
                 <Projects click= {click} to= "/projects" >
                     <motion.h2
+                        initial= {{
+                            y: -200,
+                            transition: { type: 'spring', duration: 1.5, delay: 1 }
+                        }}
+                        animate= {{
+                            y: 0,
+                            transition: { type: 'spring', duration: 1.5, delay: 1 }
+                        }}
                         whileHover={{scale: 1.1}}
                         whileTap={{ scale: 0.9 }}
                     >
                         Projects
                     </motion.h2>
                 </Projects>
+
                 <BottomBar>
+
                     <About click= {click} to= "/about" >
                         <motion.h2
+                            initial= {{
+                                y: 200,
+                                transition: { type: 'spring', duration: 1.5, delay: 1 }
+                            }}
+                            animate= {{
+                                y: 0,
+                                transition: { type: 'spring', duration: 1.5, delay: 1 }
+                            }}
                             whileHover={{scale: 1.1}}
                             whileTap={{ scale: 0.9 }}
                         >
                             About
                         </motion.h2>
                     </About>
+
                     <Skills to= "/skills" >
                         <motion.h2
+                            initial= {{
+                                y: 200,
+                                transition: { type: 'spring', duration: 1.5, delay: 1 }
+                            }}
+                            animate= {{
+                                y: 0,
+                                transition: { type: 'spring', duration: 1.5, delay: 1 }
+                            }}
                             whileHover={{scale: 1.1}}
                             whileTap={{ scale: 0.9 }}
                         >
                             Skills
                         </motion.h2>
                     </Skills>
-                </BottomBar>                
+
+                </BottomBar>    
             </Container>
+
             {click ? <Intro /> : null}
         </MainContainer>
     )

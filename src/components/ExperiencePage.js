@@ -8,9 +8,10 @@ import { Experience } from '../data/ExpData'
 import ExpComponent from './ExpComponent'
 import AnchorComponent from '../subComponents/AnchorComponent'
 import BackgroundTitle from '../subComponents/BackgroundTitle'
+import { motion } from 'framer-motion'
 
 
-const MainContainer= styled.div`
+const MainContainer= styled(motion.div)`
     background-image: url(${img});
     background-size: cover;
     background-repeat: no-repeat;
@@ -35,8 +36,20 @@ const Center= styled.div`
 const Grid= styled.div`
     display: grid;
     grid-template-columns: repeat(2, minmax(calc(10rem + 15vw), 1fr));
-    grid-gap: calc(2rem + 2vw);
+    grid-gap: calc(1rem + 2vw);
 `
+
+// Framer-motion Configurations
+const container= {
+    hidden: {opacity: 0},
+    show:{
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.5,
+            duration: 0.5
+        }
+    }
+}
 
 const ExperiencePage = () => {
 
@@ -48,7 +61,14 @@ const ExperiencePage = () => {
     }, [])
 
     return (
-        <MainContainer>
+        <MainContainer 
+            variants={container} 
+            initial= 'hidden' 
+            animate= 'show' 
+            exit= {{
+                opacity: 0, transition: { duration: 0.5 }
+            }}
+        >
             <Container>
                 <LogoComponent  />
                 <HomeButton />

@@ -1,8 +1,9 @@
+import { motion } from 'framer-motion'
 import React from 'react'
 import styled from 'styled-components'
 
 
-const Box= styled.div`
+const Box= styled(motion.div)`
     width: calc(10rem + 15vw);
     text-decoration: none;
     height: 20rem;
@@ -21,7 +22,6 @@ const Box= styled.div`
         transition: all 0.4s ease;
     }
 `
-
 const Image= styled.div`
     background-image: ${props => `url(${props.img})`};
     width: 100%;
@@ -36,7 +36,6 @@ const Image= styled.div`
         border: 1px solid ${props => props.theme.body};
     }
 `
-
 const Title= styled.h3`
     color: inherit;
     padding: 1rem 0 0.5rem 0;
@@ -50,31 +49,51 @@ const Title= styled.h3`
         border-bottom: 1px solid ${props => props.theme.body};
     } 
 `
-
 const Position= styled.h4`
     font-weight: 600;
     font-style: italic;
     margin-top: 0.3rem;
 `
-
 const Date= styled.span`
     padding: 0.5rem 0;
 `
+const Container= styled(motion.div)`
+
+`
+
+// Framer-motion Configurations
+const Item= {
+    hidden:{
+        scale: 0
+    },
+    show:{
+        scale: 1,
+        transition:{
+            type: 'spring',
+            duration: 0.5
+        }
+    }
+}
+
 
 const ExpComponent = (props) => {
 
     const {name, position, date, imgSrc}= props.exp;
 
     return (
-        <Box>
-            <Image img= {imgSrc} />
-            <Title>{name}</Title>
-            <Position>{position}</Position>
-            <br/>
-            <Date>
-                {date}
-            </Date>
-        </Box>
+        <Container
+            variants= {Item}
+        >
+            <Box>
+                <Image img= {imgSrc} />
+                <Title>{name}</Title>
+                <Position>{position}</Position>
+                <br/>
+                <Date>
+                    {date}
+                </Date>
+            </Box>
+        </Container>
     )
 }
 
