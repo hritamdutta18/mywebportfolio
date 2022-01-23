@@ -4,7 +4,8 @@ import styled from 'styled-components'
 
 
 const Box= styled(motion.div)`
-    width: calc(10rem + 15vw);
+    width: calc(8rem + 8vw);
+    margin-right: 0 !important;
     text-decoration: none;
     height: 20rem;
     padding: 1rem;
