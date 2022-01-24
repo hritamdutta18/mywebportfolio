@@ -23,7 +23,7 @@ const MainContainer= styled.div`
 `
 const Box= styled.div`
     background-color: ${props => `rgba(${props.theme.bodyRgba}, 0.8)`};
-    height: 400vh;
+    height: 530vh;
     position: relative;
     display: flex;
     align-items: center;
@@ -31,7 +31,7 @@ const Box= styled.div`
 const Main= styled(motion.ul)`
     position: fixed;
     top: 12rem;
-    left: calc(10rem + 15vw);
+    left: calc(9rem + 9vw);
     height: 40vh;
     display: flex;
     color: white;
