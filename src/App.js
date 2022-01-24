@@ -6,7 +6,7 @@ import GlobalStyles from "./globalStyles"
 // Page Components Imported
 import Main from './components/Main'
 import AboutPage from './components/AboutPage'
-import ExperiencePage from './components/ExperiencePage'
+import ExpEduPage from './components/ExpEduPage'
 import ProjectPage from './components/ProjectPage'
 import SkillsPage from './components/SkillsPage'
 import { AnimatePresence } from "framer-motion"
@@ -30,7 +30,7 @@ function App() {
           <Switch location= {location} key= {location.pathname}>
             <Route exact path= "/" component= { Main } />
             <Route exact path= "/about" component= { AboutPage } />
-            <Route exact path= "/experience" component= { ExperiencePage } />
+            <Route exact path= "/experience-experience" component= { ExpEduPage } />
             <Route exact path= "/projects" component= { ProjectPage } />
             <Route exact path= "/skills" component= { SkillsPage } />
           </Switch>

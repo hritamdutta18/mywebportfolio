@@ -34,11 +34,11 @@ const Contact= styled(NavLink)`
     text-decoration: none;
     z-index: 1;
 `
-const Experience= styled(NavLink)`
+const ExpEdu= styled(NavLink)`
     color: ${props => props.theme.text};
     position: absolute;
-    top: 57%;
-    right: 0;
+    top: 70%;
+    right: -4rem;
     transform: rotate(90deg) translate(-50%, -50%);
     text-decoration: none;
     z-index: 1;
@@ -158,7 +158,7 @@ const Main = () => {
                     </motion.h2>
                 </Contact>
 
-                <Experience to= "/experience" >
+                <ExpEdu to= "/education-experience" >
                     <motion.h2
                         initial= {{
                             y: -200,
@@ -171,9 +171,9 @@ const Main = () => {
                         whileHover={{scale: 1.1}}
                         whileTap={{ scale: 0.9 }}
                     >
-                        Experience
+                        Education &amp; Experience
                     </motion.h2>
-                </Experience>
+                </ExpEdu>
 
                 <Projects click= {click} to= "/projects" >
                     <motion.h2

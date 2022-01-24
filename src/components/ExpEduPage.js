@@ -98,7 +98,7 @@ const container= {
 }
 
 
-const ExperiencePage = () => {
+const ExpEduPage = () => {
 
     const scrollRef = useRef();
 
@@ -179,4 +179,4 @@ const ExperiencePage = () => {
     )
 }
 
-export default ExperiencePage
+export default ExpEduPage
