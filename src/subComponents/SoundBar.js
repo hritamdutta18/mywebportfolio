@@ -25,10 +25,26 @@ const Box= styled.div`
     }
     &>*:nth-child(4){
         animation-delay: 0.5s;
-        height: 0.7rem;
+        height: 1.3rem;
     }
     &>*:nth-child(5){
         animation-delay: 0.6s;
+        height: 1.6rem;
+    }
+    &>*:nth-child(6){
+        animation-delay: 0.7s;
+        height: 1.3rem;
+    }
+    &>*:nth-child(7){
+        animation-delay: 0.8s;
+        height: 1rem;
+    }
+    &>*:nth-child(8){
+        animation-delay: 0.9s;
+        height: 0.7rem;
+    }
+    &>*:nth-child(9){
+        animation-delay: 1s;
         height: 0.4rem;
     }
 `
@@ -45,15 +61,14 @@ const playsound= keyframes`
 `
 const Line= styled.span`
     background: ${props => props.theme.text};
-    border: 1px solid ${props => props.theme.body};
+    border: 0.5px solid ${props => props.theme.body};
     animation: ${playsound} 1s ease infinite;
-    animation-play-state: ${props => props.click ? "running" : "paused"};
-    
-    width: 2px;
-    margin: 0 0.1rem;
+    animation-play-state: ${props => props.click ? "running" : "paused"};    
+    width: 0.5px;
+    margin: 0 0.05rem;
 `
 
-const SoundBar = () => {
+const SoundBar = (props) => {
 
     const ref= useRef(null);
     const [click, setClick]= useState (false);
@@ -69,11 +84,15 @@ const SoundBar = () => {
 
     return (
         <Box onClick={() => handleClick()}>
-            <Line click= {click} />
-            <Line click= {click} />
-            <Line click= {click} />
-            <Line click= {click} />
-            <Line click= {click} />
+            <Line click= {click} theme= {props.theme} />
+            <Line click= {click} theme= {props.theme} />
+            <Line click= {click} theme= {props.theme} />
+            <Line click= {click} theme= {props.theme} />
+            <Line click= {click} theme= {props.theme} />
+            <Line click= {click} theme= {props.theme} />
+            <Line click= {click} theme= {props.theme} />
+            <Line click= {click} theme= {props.theme} />
+            <Line click= {click} theme= {props.theme} />
             
             <audio src= {music} ref= {ref} loop />
         </Box>
