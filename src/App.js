@@ -30,7 +30,7 @@ function App() {
           <Switch location= {location} key= {location.pathname}>
             <Route exact path= "/" component= { Main } />
             <Route exact path= "/about" component= { AboutPage } />
-            <Route exact path= "/experience-experience" component= { ExpEduPage } />
+            <Route exact path= "/education-experience" component= { ExpEduPage } />
             <Route exact path= "/projects" component= { ProjectPage } />
             <Route exact path= "/skills" component= { SkillsPage } />
           </Switch>
