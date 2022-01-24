@@ -7,6 +7,7 @@ import SocialIcons from '../subComponents/SocialIcons'
 import ParticleComponent from '../subComponents/ParticleComponent'
 import rocket from '../assets/Images/rocket.png'
 import BackgroundTitle from '../subComponents/BackgroundTitle'
+import { Download } from './AllSvgs'
 
 
 const Box= styled.div`
@@ -76,12 +77,11 @@ const Rocket= styled.div`
 const Main= styled.div`
     border: 2px solid ${props => props.theme.text};
     color: ${props => props.theme.text};
-    padding: 2.5rem;
+    padding: 2rem;
     width: 60vw;
     height: 55vh;
     z-index: 3;
     line-height: 1.5;
-
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -89,16 +89,38 @@ const Main= styled.div`
     font-size: calc(0.7rem + 1vw);
     font-family: 'Ubuntu Mono', monospace;
     font-style: italic;
-    backdrop-filter: blur(3px);
-    text-align: justify;
-    
+    backdrop-filter: blur(8px);
+    text-align: justify;    
     position: absolute;
-    left: 18%;
-    top: 10rem;
+    right: 8rem;
+    bottom: 7rem;
+    border-radius: 50px 0 50px 0;
+`
+const Resume= styled.button`
+    background: ${props => props.theme.text};    
+    border: 2px solid ${props => props.theme.text};
+    border-radius: 0 0 25px 0;
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: calc(0.7rem + 0.7vw);
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+    align-self: end;
 
-    div{
-        align-self: end;
+    a{
+        color: ${props => props.theme.body};
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
     }
+    &:hover{
+        background: transparent;
+        transition: all 0.3s ease;
+    }    
+    &:hover a{
+        color: ${props => props.theme.text};
+        transition: all 0.3s ease;
+        fill: ${props => props.theme === 'dark' ? DarkTheme.text: DarkTheme.body};
+    }    
 `
 
 const AboutPage = () => {
@@ -119,15 +141,19 @@ const AboutPage = () => {
                     I am a full-stack web developer specializing in MERN Stack.
                     I am also interested in software development with proficiency in C and JAVA.
                     <br/><br/>
-                    I am an avid badminton player, a FIFA fanatic and also a cricket enthusiast. Music is my escape buddy.
+                    I am an avid badminton player, a FIFA fanatic and also a cricket enthusiast. Music is my escape.
                     <br/> <br/>
-                    <div>                        
-                        Wanna have some random discussions ?<br/>
-                        Feel free to reach out to me !
-                    </div>
+                    Feel free to reach out to me !  
+                    <br/>                    
+                    <Resume>
+                        <a href='Resume.pdf' style= {{textDecoration: 'none'}} download= "Hritam's Resume.pdf">
+                            <Download width= {18} height= {18} fill= 'currentColor' />&nbsp;<span>Download Resume</span>
+                        </a>
+                    </Resume>
+                    
                 </Main>
 
-                <BackgroundTitle text= "ABOUT" bottom= '5%'  right= '5%' />
+                <BackgroundTitle text= "ABOUT" top= '10%'  left= '10%' />
 
             </Box>
         </ThemeProvider>
