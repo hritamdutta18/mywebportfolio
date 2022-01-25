@@ -1,16 +1,21 @@
 import React from 'react'
+import { lazy, Suspense } from 'react'
 import styled, { keyframes, ThemeProvider } from 'styled-components'
-import { DarkTheme } from './Themes'
-import LogoComponent from '../subComponents/LogoComponent'
-import HomeButton from '../subComponents/HomeButton'
-import SocialIcons from '../subComponents/SocialIcons'
-import ParticleComponent from '../subComponents/ParticleComponent'
+import { DarkTheme, mediaQueries } from './Themes'
 import rocket from '../assets/Images/rocket.png'
-import BackgroundTitle from '../subComponents/BackgroundTitle'
 import { Download } from './AllSvgs'
+import { motion } from 'framer-motion'
+import PreLoader from '../subComponents/PreLoader'
+
+// Importing Components using React.lazy
+const LogoComponent= lazy (() => import ('../subComponents/LogoComponent'))
+const HomeButton= lazy (() => import ('../subComponents/HomeButton'))
+const SocialIcons= lazy (() => import ('../subComponents/SocialIcons'))
+const ParticleComponent= lazy (() => import ('../subComponents/ParticleComponent')) 
+const BackgroundTitle=  lazy (() => import ('../subComponents/BackgroundTitle'))
 
 
-const Box= styled.div`
+const Box= styled(motion.div)`
     background-color: ${props => props.theme.body};
     height: 100vh;
     width: 100vw;
@@ -63,7 +68,7 @@ const float= keyframes`
         transform: rotate(180deg);
     }
 `
-const Rocket= styled.div`
+const Rocket= styled(motion.div)`
     position: absolute;
     width: 30vw;
     animation: ${float} 100s infinite linear;
@@ -74,7 +79,7 @@ const Rocket= styled.div`
         transform: rotate(20deg);
     }
 `
-const Main= styled.div`
+const Main= styled(motion.div)`
     border: 2px solid ${props => props.theme.text};
     color: ${props => props.theme.text};
     padding: 2rem;
@@ -92,9 +97,27 @@ const Main= styled.div`
     backdrop-filter: blur(8px);
     text-align: justify;    
     position: absolute;
-    right: 8rem;
-    bottom: 7rem;
+    right: calc(3rem + 3vw);
+    bottom: 6rem;
     border-radius: 50px 0 50px 0;
+
+    ${mediaQueries(40)`
+        width: 70vw;
+        transform: translate(30%, 40%);
+        bottom: 40%;
+        right: 30%;
+    `};
+    ${mediaQueries(30)`
+        padding: 1.5rem;
+        width: 60vw;
+        height: auto;
+        backdrop-filter: none;
+        margin-top: 2rem;
+    `};
+    ${mediaQueries(20)`
+        font-size: calc(0.6rem + 1vw);
+    `};
+
 `
 const Resume= styled.button`
     background: ${props => props.theme.text};    
@@ -126,36 +149,49 @@ const Resume= styled.button`
 const AboutPage = () => {
     return (
         <ThemeProvider theme= {DarkTheme}>
-            <Box>
-                <LogoComponent theme= 'dark'/>
-                <SocialIcons theme= 'dark'/>
-                <HomeButton />
-                <ParticleComponent theme= 'dark'/>
+            <Suspense fallback= {<PreLoader />}>
+                <Box
+                    key='skills'
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1, transition: { duration: 0.5 } }}
+                    exit={{ opacity: 0, transition: { duration: 0.5 } }}
+                >
+                    <LogoComponent theme= 'dark'/>
+                    <SocialIcons theme= 'dark'/>
+                    <HomeButton />
+                    <ParticleComponent theme= 'dark'/>
 
-                <Rocket>
-                    <img src= {rocket} alt= "Rocket" />
-                </Rocket>   
+                    <Rocket
+                        initial={{ left: '0%', bottom: '-10%' }}
+                        animate={{ transition: { duration: 2, delay: 0.5 } }}
+                    >
+                        <img src= {rocket} alt= "Rocket" />
+                    </Rocket>   
 
-                <Main>
-                    Currently, I am a B.Tech student at VIT Vellore pursuing Computer Science &amp; Engineering with specialization in IoT.   
-                    I am a full-stack web developer specializing in MERN Stack.
-                    I am also interested in software development with proficiency in C and JAVA.
-                    <br/><br/>
-                    I am an avid badminton player, a FIFA fanatic and also a cricket enthusiast. Music is my escape.
-                    <br/> <br/>
-                    Feel free to reach out to me !  
-                    <br/>                    
-                    <Resume>
-                        <a href='Resume.pdf' style= {{textDecoration: 'none'}} download= "Hritam's Resume.pdf">
-                            <Download width= {18} height= {18} fill= 'currentColor' />&nbsp;<span>Download Resume</span>
-                        </a>
-                    </Resume>
-                    
-                </Main>
+                    <Main
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1, transition: { duration: 1, delay: 1 } }}
+                    >
+                        Currently, I am a B.Tech student at VIT Vellore pursuing Computer Science &amp; Engineering with specialization in IoT.   
+                        I am a full-stack web developer specializing in MERN Stack.
+                        I am also interested in software development with proficiency in C and JAVA.
+                        <br/> <br/>
+                        I am an avid badminton player, a FIFA fanatic and also a cricket enthusiast. Music is my escape.
+                        <br/> <br/>
+                        Feel free to reach out to me !  
+                        <br/> <br/>                    
+                        <Resume>
+                            <a href='Resume.pdf' style= {{textDecoration: 'none'}} download= "Hritam's Resume.pdf">
+                                <Download width= {18} height= {18} fill= 'currentColor' />&nbsp;<span>Download Resume</span>
+                            </a>
+                        </Resume>
+                        
+                    </Main>
 
-                <BackgroundTitle text= "ABOUT" top= '10%'  left= '10%' />
+                    <BackgroundTitle text= "ABOUT" top= '10%'  left= '10%' />
 
-            </Box>
+                </Box>
+            </Suspense>            
         </ThemeProvider>
     )
 }
