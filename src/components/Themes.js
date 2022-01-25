@@ -15,3 +15,16 @@ export const DarkTheme= {
     textRgba : "252, 246, 244",
     bodyRgba:"0,0,0"
 }
+
+// Media Queries (in em)
+export const breakpoints = {
+    sm: 20,
+    md: 30,
+    lg: 45,
+    xl: 60,
+    xxl:75
+}
+  
+export const mediaQueries = key => {
+    return style => `@media (max-width: ${key}em) { ${style} }`
+}
