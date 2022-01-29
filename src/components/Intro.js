@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import Me from '../assets/Images/profile-avatar.png'
+import myAvatar from '../assets/Images/profile-avatar.png'
 import { motion } from 'framer-motion'
 import { mediaQueries } from "./Themes"
 
@@ -78,7 +78,7 @@ const SubBox= styled.div`
 
     .avatar{
         position: absolute;
-        bottom: 0;
+        bottom: -15px;
         left: 50%;
         transform: translate(-50%, 0%);
         width: 110%;
@@ -159,7 +159,7 @@ const Intro = () => {
                     animate= {{opacity: 1}}
                     transition= {{ duration: 1, delay: 2}}
                 >
-                    <img className= "avatar" src= {Me} alt= "Profile Avatar" />
+                    <img className= "avatar" src= {myAvatar} alt= "Profile Avatar" />
                 </motion.div>
             </SubBox>   
 
