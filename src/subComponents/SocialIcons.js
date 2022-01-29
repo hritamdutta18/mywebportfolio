@@ -33,7 +33,7 @@ const Icons= styled.div`
 
     & svg{
         &>*{
-            filter: drop-shadow(0px 2px 2px rgba(0, 0, 14, 0.2));
+            filter: drop-shadow(0px 2px 3px rgba(0, 0, 14, 0.2));
         }
     }
 
