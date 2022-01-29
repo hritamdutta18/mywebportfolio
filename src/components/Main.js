@@ -62,6 +62,7 @@ const Center= styled.button`
 
     &>:first-child{
         animation: ${rotateLogo} infinite 1.75s linear;       
+        fill: ${props => props.theme.text};
     }
 
     &>:last-child{
@@ -86,16 +87,20 @@ const Contact= styled(NavLink)`
     top: 2.5rem;
     right: calc(1rem + 2vw);
     text-decoration: none;
-    z-index: 1;
+    z-index: 1;        
 `
 const ExpEdu= styled(NavLink)`
-    color: ${props => props.theme.text};
+    color: ${props => props.click ? props.theme.body : props.theme.text};
     position: absolute;
-    top: 60%;
-    right: -3rem;
-    transform: rotate(90deg) translate(-50%, -50%);
+    top: 50%;
+    right: 2rem;
+    transform: translate(50%, -50%) rotate(90deg);
     text-decoration: none;
     z-index: 1;
+
+    @media only screen and (max-width: 50em){  
+        text-shadow: ${props => props.click ? `rgb(0 0 0) 0px 0px 4px` : `none`};
+    }
 `
 const Projects= styled(NavLink)`
     color: ${props => props.click ? props.theme.body : props.theme.text};
@@ -106,6 +111,10 @@ const Projects= styled(NavLink)`
     transform: translate(-50%, -50%) rotate(-90deg);
     text-decoration: none;
     z-index: 1;
+
+    @media only screen and (max-width: 50em){  
+        text-shadow: ${props => props.click ? `rgb(0 0 0) 0px 0px 4px` : `none`};
+    }
 `
 const BottomBar= styled.div`
     position: absolute;
@@ -129,13 +138,20 @@ const Skills= styled(NavLink)`
 const DarkDiv= styled.div`
     position: absolute;
     top: 0;
-    background-color: #000;
+    background-color: ${props => props.theme.text};
     bottom: 0;
     right: 50%;
     width: ${props => props.click ? '50%' : "0%"};
     height: ${props => props.click ? '100%' : "0%"};
     z-index: 1;
     transition: height 0.5s ease, width 1s ease 0.5s;
+
+    @media only screen and (max-width: 50em){  
+        width: ${props => props.click ? '100%' : "0%"};
+        height: ${props => props.click ? '50%' : "0%"};
+        right: 0;
+        transition: width 0.5s ease 0s, height 1s ease 0.5s;
+    }
 `
 
 const Main = () => {
@@ -213,7 +229,10 @@ const Main = () => {
                         </motion.h2>
                     </ExpEdu>                     
                     
-                    <Projects click= {+click} to= "/projects" >
+                    <Projects 
+                        click= {+click} 
+                        to= "/projects" 
+                        style= {{ left: matchQuery ? '1.75rem' : '2.5rem'}} >
                         <motion.h2
                             onClick={ () => setPath("projects") }
                             initial= {{

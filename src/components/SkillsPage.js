@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
-import { lightTheme } from './Themes'
+import { lightTheme, mediaQueries} from './Themes'
 import { Coding, Developer, Github } from './AllSvgs'
-import LogoComponent from '../subComponents/LogoComponent'
-import HomeButton from '../subComponents/HomeButton'
-import SocialIcons from '../subComponents/SocialIcons'
-import ParticleComponent from '../subComponents/ParticleComponent'
 import { HTML, CSS, Javascript, C, JAVA, Reactjs, Node, Express, MongoDB, VSCode, Bootstrap, Heroku } from '../subComponents/Skill-IconsSvgs'
-import BackgroundTitle from '../subComponents/BackgroundTitle'
+import PreLoader from '../subComponents/PreLoader'
+
+// Importing Components using React.lazy
+const LogoComponent= lazy (() => import ('../subComponents/LogoComponent'));
+const HomeButton= lazy (() => import ('../subComponents/HomeButton'));
+const SocialIcons= lazy (() => import ('../subComponents/SocialIcons'));
+const BackgroundTitle=  lazy (() => import ('../subComponents/BackgroundTitle'));
+const ParticleComponent= lazy (() => import ('../subComponents/ParticleComponent')) 
 
 
 const Box= styled.div`
@@ -18,15 +21,33 @@ const Box= styled.div`
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+
+    ${mediaQueries(60)`
+        flex-direction: column;
+        padding: 8rem 0 4rem 0;
+        height: auto;
+
+        &>*:nth-child(5){
+            margin-bottom: 5rem;
+        }
+    `}
+    ${mediaQueries(30)`
+        &>*:nth-child(5){
+            margin-bottom: 4rem;
+        }
+        &>*:nth-child(7){
+            font-size: calc(4rem + 4vw);
+        }
+    `}
 `
 const Main= styled.div`
     border: 2px solid ${props => props.theme.text};
     color: ${props => props.theme.text};
-    background-color: ${props => props.theme.body};
+    background-color: ${props => `rgba(${props.theme.bodyRgba}, 0.4)`};
     padding: 2rem;
     width: 30vw;
-    height: 60vh;
-    z-index: 3;
+    height: 65vh;
+    z-index: 2;
     line-height: 1.5;
     font-family: 'Ubuntu Mono', monospace;
     display: flex;
@@ -38,12 +59,26 @@ const Main= styled.div`
         background-color: ${props => props.theme.text};
         transition: all 0.3s ease;
     }
+
+    ${mediaQueries(62)`
+        height: 50vh;
+        width: 50vw;
+    `}
+    ${mediaQueries(55)`
+        height: max-content;
+        width: 50vw;
+    `}
+    ${mediaQueries(50)`
+        width: 55vw;
+        height: max-content;
+        padding: 1.5rem;
+    `}
 `
 const Title= styled.h2`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: calc(0.75em + 1vw);
+    font-size: calc(0.7em + 1vw);
 
     ${Main}:hover &{
         &>*{
@@ -56,10 +91,23 @@ const Title= styled.h2`
         margin-right: 1rem;
     }
 
+    ${mediaQueries(60)`
+        font-size:calc(0.8em + 1vw);
+    `}
+    ${mediaQueries(50)`
+        font-size: calc(1em + 2vw);
+         margin-bottom: 1rem;
+    `}
+    ${mediaQueries(30)`
+        font-size:calc(1em + 1vw);
+    `};
+    ${mediaQueries(25)`
+        font-size:calc(0.8em + 1vw);
+    `};
 `
 const Description= styled.div`
     color: ${props => props.theme.text};
-    font-size: calc(0.4em + 1vw);
+    font-size: calc(0.6em + 1vw);
     padding: 0.5rem 0;
     text-align: justify;
 
@@ -87,6 +135,16 @@ const Description= styled.div`
         align-items: center;
         width: 50%;
     }
+
+    ${mediaQueries(50)`
+        font-size: calc(0.8em + 1vw);
+    `}
+    ${mediaQueries(30)`
+        font-size:calc(0.7em + 1vw);
+    `}
+    ${mediaQueries(25)`
+        font-size:calc(0.5em + 1vw);
+    `}
 `
 const LI= styled.li`
     fill: ${props => props.theme.text}; 
@@ -97,78 +155,84 @@ const LI= styled.li`
 `
 
 const SkillsPage = () => {
+
+    const matchQuery = window.matchMedia("(max-width: 30em)").matches;
+
     return (
         <ThemeProvider theme= {lightTheme}>
-            <Box>
-                <LogoComponent theme= 'light'/>
-                <SocialIcons theme= 'light'/>
-                <HomeButton />
-                <ParticleComponent theme= 'light'/>
-                <Main>
-                    <Title>
-                        <Developer width= {40} height= {40} />
-                        MERN Developer
-                    </Title>
-                    <Description>   
-                        I am more in love with frontend development. Challenging and creative designs excite me !<br/>
-                        I have quite a bit of experience in backend development as well.                        
-                    </Description>
-                    <Description>
-                        <strong>SKILLS</strong>
-                            <ul>
-                                <div>
-                                    <li><HTML width= {20} height= {20}/>&nbsp;HTML</li>
-                                    <li><CSS width= {20} height= {20}/>&nbsp;CSS</li>
-                                </div>
-                                <div>
-                                    <li><Javascript width= {20} height= {20}/>&nbsp;Javascript</li>                                    
-                                    <li><Bootstrap width= {20} height= {20}/>&nbsp;Bootstrap</li>
-                                </div>
-                                <div>                                    
-                                    <li><Reactjs width= {20} height= {20}/>&nbsp;React.js</li>
-                                    <li><Node width= {20} height= {20}/>&nbsp;Node.js</li>                                  
-                                </div>
-                                <div>                                     
-                                    <LI theme= {lightTheme}><Express width= {20} height= {20}/>&nbsp;Express.js</LI>  
-                                    <li><MongoDB width= {20} height= {20}/>&nbsp;MongoDB</li>
-                                </div>
-                            </ul>
-                    </Description>
-                </Main>
+            <Suspense fallback= {<PreLoader />}>
+                <Box>
+                    <LogoComponent theme= 'light'/>
+                    <SocialIcons theme= 'light'/>
+                    <HomeButton />
+                    <ParticleComponent theme= 'light'/>
 
-                <Main>
-                    <Title>
-                        <Coding width= {35} height= {35} />
-                        Repertoire
-                    </Title>
-                    <Description>   
-                        Being a CSE student, I am also into basic coding and Data Structures &amp; Algorithms.                    
-                    </Description>
-                    <Description>
-                        <strong>LANGUAGES</strong>
-                            <ul>
-                                <div>
-                                    <li><C width= {20} height= {20}/>&nbsp;C</li>
-                                    <li><JAVA width= {20} height= {20}/>&nbsp;JAVA</li>
-                                </div>
-                            </ul>
-                    </Description>
-                    <Description>   
-                        I do use quite a few tools for my coding errands and hosting my web apps.                   
-                    </Description>
-                    <Description>
-                        <strong>TOOLS</strong>
-                            <ul>
-                                <li><VSCode width= {20} height= {20}/>&nbsp;Visual Studio Code</li>
-                                <LI theme= {lightTheme}><Github width= {20} height= {20} />&nbsp;GitHub</LI>
-                                <li><Heroku width= {20} height= {20}/>&nbsp;Heroku</li>
-                            </ul>
-                    </Description>
-                </Main>
-                
-                <BackgroundTitle text= "SKILLS" top= '80%'  left= '20%' />
+                    <Main>
+                        <Title>
+                            <Developer width= {matchQuery ? 35 : 40} height= {matchQuery ? 35 : 40} />
+                            MERN Developer
+                        </Title>
+                        <Description>   
+                            I am more in love with frontend development. Challenging and creative designs excite me !<br/>
+                            I have quite a bit of experience in backend development as well.                        
+                        </Description>
+                        <Description>
+                            <strong>SKILLS</strong>
+                                <ul>
+                                    <div>
+                                        <li><HTML width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20}/>&nbsp;HTML</li>
+                                        <li><CSS width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20}/>&nbsp;CSS</li>
+                                    </div>
+                                    <div>
+                                        <li><Javascript width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20}/>&nbsp;Javascript</li>                                    
+                                        <li><Bootstrap width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20}/>&nbsp;Bootstrap</li>
+                                    </div>
+                                    <div>                                    
+                                        <li><Reactjs width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20}/>&nbsp;React.js</li>
+                                        <li><Node width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20}/>&nbsp;Node.js</li>                                  
+                                    </div>
+                                    <div>                                     
+                                        <LI theme= {lightTheme}><Express width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20}/>&nbsp;Express.js</LI>  
+                                        <li><MongoDB width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20}/>&nbsp;MongoDB</li>
+                                    </div>
+                                </ul>
+                        </Description>
+                    </Main>
 
-            </Box>
+                    <Main>
+                        <Title>
+                            <Coding width= {matchQuery ? 30 : 35} height= {matchQuery ? 30 : 35} />
+                            Repertoire
+                        </Title>
+                        <Description>   
+                            Being a CSE student, I am also into basic coding and Data Structures &amp; Algorithms.                    
+                        </Description>
+                        <Description>
+                            <strong>LANGUAGES</strong>
+                                <ul>
+                                    <div>
+                                        <li><C width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20}/>&nbsp;C</li>
+                                        <li><JAVA width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20}/>&nbsp;JAVA</li>
+                                    </div>
+                                </ul>
+                        </Description>
+                        <Description>   
+                            I do use quite a few tools for my coding &amp; web dev errands.                   
+                        </Description>
+                        <Description>
+                            <strong>TOOLS</strong>
+                                <ul>
+                                    <li><VSCode width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20}/>&nbsp;Visual Studio Code</li>
+                                    <LI theme= {lightTheme}><Github width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20} />&nbsp;GitHub</LI>
+                                    <li><Heroku width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20}/>&nbsp;Heroku</li>
+                                </ul>
+                        </Description>
+                    </Main>
+                    
+                    <BackgroundTitle text= "SKILLS" top= {matchQuery ? '55%' : '80%'}  left= {matchQuery ? '30%' : '20%'} />
+
+                </Box>
+            </Suspense>            
         </ThemeProvider>
     )
 }

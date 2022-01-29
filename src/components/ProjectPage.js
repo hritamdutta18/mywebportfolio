@@ -1,15 +1,18 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, lazy, Suspense } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
-import { DarkTheme } from './Themes'
-import LogoComponent from '../subComponents/LogoComponent'
-import HomeButton from '../subComponents/HomeButton'
-import SocialIcons from '../subComponents/SocialIcons'
+import { DarkTheme, mediaQueries } from './Themes'
 import { Project } from '../data/ProjectData'
 import ProjectCard from '../subComponents/ProjectCard'
 import { HDLogo } from './AllSvgs'
-import BackgroundTitle from '../subComponents/BackgroundTitle'
 import { motion } from 'framer-motion'
 import img from '../assets/Images/coder-img.jpg'
+import PreLoader from '../subComponents/PreLoader'
+
+// Importing Components using React.lazy
+const LogoComponent= lazy (() => import ('../subComponents/LogoComponent'));
+const HomeButton= lazy (() => import ('../subComponents/HomeButton'));
+const SocialIcons= lazy (() => import ('../subComponents/SocialIcons'));
+const BackgroundTitle=  lazy (() => import ('../subComponents/BackgroundTitle'));
 
 
 const MainContainer= styled.div`
@@ -23,18 +26,39 @@ const MainContainer= styled.div`
 `
 const Box= styled.div`
     background-color: ${props => `rgba(${props.theme.bodyRgba}, 0.8)`};
-    height: 530vh;
+    height: 400vh;
     position: relative;
     display: flex;
     align-items: center;
+
+    & #warning{
+        font-size: 1em !important;
+    }
 `
 const Main= styled(motion.ul)`
     position: fixed;
     top: 12rem;
+    transform: translate(-30%, 0);
     left: calc(9rem + 9vw);
-    height: 40vh;
+    height: 40vh;    
     display: flex;
-    color: white;
+    color: ${props => props.theme.text};
+    
+    ${mediaQueries(65)`       
+        top: 30%;
+    `}
+    ${mediaQueries(50)`       
+        left: calc(8rem + 9vw);
+    `}
+    ${mediaQueries(40)`      
+        left: calc(7rem + 9vw);
+    `}
+    ${mediaQueries(30)`            
+        left: calc(5rem + 9vw);
+    `}
+    ${mediaQueries(25)`            
+        left: calc(3rem + 9vw);
+    `}
 `
 const Rotate= styled.span`
     display: block;
@@ -44,6 +68,25 @@ const Rotate= styled.span`
     width: 90px;
     height: 90px;
     z-index: 1;
+
+    ${mediaQueries(40)`
+        width: 65px;
+        height: 65px;  
+
+        svg{
+            width: 65px;
+            height: 65px;
+        }
+    `}
+    ${mediaQueries(25)`
+        width: 55px;
+        height: 55px;
+
+        svg{
+            width: 55px;
+            height: 55px;
+        }
+    `};
 `
 
 // Framer-motion Configurations
@@ -67,38 +110,55 @@ const ProjectPage = () => {
     useEffect(() => {
 
         const rotateLogo= () =>{
-            ref.current.style.transform= `translateX(${-window.pageYOffset}px)`;
-            return (hdlogo.current.style.transform= 'rotate('+ -window.pageYOffset + 'deg)');
+                ref.current.style.transform= `translateX(${-window.pageYOffset}px)`;
+                return (hdlogo.current.style.transform= 'rotate('+ -window.pageYOffset + 'deg)');
         }
 
         window.addEventListener('scroll', rotateLogo);
         return () => window.removeEventListener('scroll', rotateLogo);
 
     }, [])
+    
+    const matchQuery = window.matchMedia("(max-width: 60em)").matches;
 
     return (
         <ThemeProvider theme= {DarkTheme}>
-            <MainContainer>
-                <Box>
-                    <LogoComponent theme= 'dark'/>
-                    <SocialIcons theme= 'dark'/>
-                    <HomeButton />
-                    
-                    <Main ref= {ref} variants={container} initial='hidden' animate= 'show'>
+            <Suspense fallback= {<PreLoader />}>
+                <MainContainer>
+                    <Box
+                        key="projects"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1, transition: { duration: 1 } }}
+                        exit={{ opacity: 0, transition: { duration: 0.5 } }}
+                    >
+                        <LogoComponent theme= 'dark'/>
+                        <SocialIcons theme= 'dark' key= 'projects' />
+                        <HomeButton />
+                        
+                        <Main ref= {ref} variants={container} initial='hidden' animate= 'show'>
+                            {
+                                Project.map(p => 
+                                    <ProjectCard key= {p.id} data= {p}/>
+                                )
+                            }
+                        </Main>
+
+                        <Rotate ref= {hdlogo}>
+                            <HDLogo width= {90} height= {90} fill= {DarkTheme.text}/>
+                        </Rotate>
+
+                        <BackgroundTitle text= "PROJECTS" top= '10%' left= '5%' />
+
                         {
-                            Project.map(p => 
-                                <ProjectCard key= {p.id} data= {p}/>
-                            )
+                            matchQuery ?
+                            <BackgroundTitle text= "(Swipe up/down to scroll list)" bottom= '2rem' right= '9rem' />
+                            :
+                            <></>
                         }
-                    </Main>
-
-                    <Rotate ref= {hdlogo}>
-                        <HDLogo width= {90} height= {90} fill= {DarkTheme.text}/>
-                    </Rotate>
-
-                    <BackgroundTitle text= "PROJECTS" top= '10%' left= '5%' />
-                </Box>
-            </MainContainer>            
+                        
+                    </Box>
+                </MainContainer> 
+            </Suspense>                       
         </ThemeProvider>
     )
 }

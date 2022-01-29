@@ -84,7 +84,7 @@ const Main= styled(motion.div)`
     color: ${props => props.theme.text};
     padding: 2rem;
     width: 60vw;
-    height: 55vh;
+    height: 60vh;
     z-index: 3;
     line-height: 1.5;
     display: flex;
@@ -103,6 +103,7 @@ const Main= styled(motion.div)`
 
     ${mediaQueries(40)`
         width: 70vw;
+        height: 55vh;
         transform: translate(30%, 40%);
         bottom: 40%;
         right: 30%;
@@ -117,7 +118,6 @@ const Main= styled(motion.div)`
     ${mediaQueries(20)`
         font-size: calc(0.6rem + 1vw);
     `};
-
 `
 const Resume= styled.button`
     background: ${props => props.theme.text};    

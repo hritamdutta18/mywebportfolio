@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import React from 'react'
 import styled from 'styled-components'
+import { mediaQueries } from './Themes'
 
 
 const Box= styled(motion.div)`
@@ -22,6 +23,21 @@ const Box= styled(motion.div)`
         background: ${props => props.theme.text};
         transition: all 0.4s ease;
     }
+
+    ${mediaQueries(60)`
+        width: calc(11rem + 11vw);
+    `}
+    ${mediaQueries(50)`
+        width: calc(55vw);
+    `}
+    ${mediaQueries(30)`
+        height: 18rem;        
+        backdrop-filter: none;
+    `}
+    ${mediaQueries(20)`
+        height: 14rem;
+        padding: 0.8rem;
+    `}
 `
 const Image= styled.div`
     background-image: ${props => `url(${props.img})`};
@@ -36,6 +52,10 @@ const Image= styled.div`
     ${Box}:hover &{
         border: 1px solid ${props => props.theme.body};
     }
+
+    ${mediaQueries(25)`
+        height: 70%;
+    `}
 `
 const Title= styled.h3`
     color: inherit;
@@ -49,24 +69,35 @@ const Title= styled.h3`
     ${Box}:hover &{
         border-bottom: 1px solid ${props => props.theme.body};
     } 
+
+    ${mediaQueries(40)`
+        font-size: calc(0.8em + 1vw);
+    `}
+    ${mediaQueries(25)`
+        font-size: calc(0.6em + 1vw);
+    `}
 `
 const Branch= styled.h4`
     font-weight: 600;
     font-style: italic;
     margin-top: 0.3rem;
+
+    ${mediaQueries(25)`
+        font-size: calc(0.5em + 1vw);
+    `}
 `
 const Date= styled.span`
     padding: 0.5rem 0;
-`
-const Container= styled(motion.div)`
 
+    ${mediaQueries(25)`
+        font-size: calc(0.6em + 1vw);
+    `}
 `
+const Container= styled(motion.div)``
 
 // Framer-motion Configurations
 const Item= {
-    hidden:{
-        scale: 0
-    },
+    hidden:{ scale: 0 },
     show:{
         scale: 1,
         transition:{
@@ -82,9 +113,7 @@ const EduComponent = (props) => {
     const {name, branch, marks, date, imgSrc}= props.exp;
 
     return (
-        <Container
-            variants= {Item}
-        >
+        <Container variants= {Item} >
             <Box>
                 <Image img= {imgSrc} />
                 <Title>{name}</Title>

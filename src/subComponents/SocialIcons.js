@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { Github, Gmail, Instagram, Linkedin } from '../components/AllSvgs'
 import styled from 'styled-components'
-import { DarkTheme } from '../components/Themes'
+import { DarkTheme, mediaQueries } from '../components/Themes'
 import { motion } from 'framer-motion'
 
 
@@ -15,77 +15,84 @@ const Icons= styled.div`
     left: 2rem;
     z-index: 3;
 
-    &>*::not(:last-child){
-        margin: 0 .5rem 0;
+    &>*:not(:last-child){
+        margin: 0.5rem 0;
+        
+        ${mediaQueries(20)`
+            margin: 0.3rem 0;
+        `}
     }
+
+    &>*:nth-child(1), &>*:nth-child(2), &>*:nth-child(3){
+        margin: 0.3rem 0; 
+        &>*{
+            color: inherit;
+        }
+    }
+    
+
+    & svg{
+        &>*{
+            filter: drop-shadow(0px 2px 2px rgba(0, 0, 14, 0.2));
+        }
+    }
+
+    ${mediaQueries(40)`
+        left: 1rem;
+        svg{
+            width: 22px;
+            height: 22px;
+        }
+    `}    
 `
 const Line= styled(motion.span)`
     width: 2px;
-    height: 8rem;
     background-color: ${props => props.color === "dark" ?  DarkTheme.text : DarkTheme.body};
     transition: background-color 1s ease;
 `
 
 const SocialIcons = (props) => {
-    return (
-        <Icons>            
 
+    const matchQuery = window.matchMedia("(max-width: 40em)").matches;
+
+    return (
+        <Icons>  
             <motion.div 
-                initial= {{
-                    transform: "scale(0)"
-                }}
-                animate= {{
-                    scale: [0,1,1.5,1]
-                }}
+                initial= {{ transform: "scale(0)" }}
+                animate= {{ scale: [0,1,1.5,1] }}
                 transition={{ type: 'spring', duration: 1, delay: 1 }}
-                style={{margin: '0.3rem 0'}}
             >
-                <NavLink style={{color: 'inherit'}} target='_blank' to= {{pathname: "mailto:hritamloyola10@gmail.com"}}>
+                <NavLink target='_blank' to= {{pathname: "mailto:hritamloyola10@gmail.com"}}>
                     <Gmail width= {27} height= {27} fill= {props.theme === "dark" ?  DarkTheme.text : DarkTheme.body} />
                 </NavLink>
             </motion.div>
 
             <motion.div 
-                initial= {{
-                    transform: "scale(0)"
-                }}
-                animate= {{
-                    scale: [0,1,1.5,1]
-                }}
+                initial= {{ transform: "scale(0)" }}
+                animate= {{ scale: [0,1,1.5,1] }}
                 transition={{ type: 'spring', duration: 1, delay: 1.2 }}
-                style={{margin: '0.3rem 0'}}
             >
-                <NavLink style={{color: 'inherit'}} target='_blank' to= {{pathname: "https://github.com/hritamdutta18/"}}>
+                <NavLink target='_blank' to= {{pathname: "https://github.com/hritamdutta18/"}}>
                     <Github width= {27} height= {27} fill={props.theme === "dark" ?  DarkTheme.text : DarkTheme.body} />
                 </NavLink>
             </motion.div>
 
             <motion.div 
-                initial= {{
-                    transform: "scale(0)"
-                }}
-                animate= {{
-                    scale: [0,1,1.5,1]
-                }}
+                initial= {{ transform: "scale(0)" }}
+                animate= {{ scale: [0,1,1.5,1] }}
                 transition={{ type: 'spring', duration: 1, delay: 1.4 }}
-                style={{margin: '0.3rem 0'}}
             >
-                <NavLink style={{color: 'inherit'}} target='_blank' to= {{pathname: "https://www.linkedin.com/in/hritam-dutta-6713581b6"}}>
+                <NavLink target='_blank' to= {{pathname: "https://www.linkedin.com/in/hritam-dutta-6713581b6"}}>
                     <Linkedin width= {27} height= {27} fill={props.theme === "dark" ?  DarkTheme.text : DarkTheme.body} />
                 </NavLink>
             </motion.div>
 
             <motion.div 
-                initial= {{
-                    transform: "scale(0)"
-                }}
-                animate= {{
-                    scale: [0,1,1.5,1]
-                }}
+                initial= {{ transform: "scale(0)" }}
+                animate= {{ scale: [0,1,1.5,1] }}
                 transition={{ type: 'spring', duration: 1, delay: 1.6 }}
-                style={{margin: '0.3rem 0'}}
             >
-                <NavLink style={{color: 'inherit'}} target='_blank' to= {{pathname: "https://www.instagram.com/_hritam_dutta_"}}>
+                <NavLink target='_blank' to= {{pathname: "https://www.instagram.com/_hritam_dutta_"}}>
                     <Instagram width= {27} height= {27} fill={props.theme === "dark" ?  DarkTheme.text : DarkTheme.body} />
                 </NavLink>
             </motion.div>
@@ -93,7 +100,7 @@ const SocialIcons = (props) => {
             <Line 
                 color= {props.theme}
                 initial= {{ height: 0 }}
-                animate= {{ height: '8rem' }}
+                animate= {{ height: matchQuery ? '5rem' : '8rem' }}
                 transition= {{ type: 'spring', duration: 1, delay: 0.8 }}            
             />
         </Icons>

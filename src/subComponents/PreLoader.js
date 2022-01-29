@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { keyframes } from "styled-components"
 import { HDLogo } from '../components/AllSvgs';
-
+import { mediaQueries } from '../components/Themes';
 
 const heartbeatLogo = keyframes`
     0%{
@@ -24,15 +24,24 @@ const Box = styled.div`
 
     &>:first-child{
         fill: ${(props) => props.theme.body};
-        animation: ${heartbeatLogo} infinite 2s ease;       
-    }
+        animation: ${heartbeatLogo} infinite 2s ease;  
+        
+        ${mediaQueries(30)`
+            width: 150px;
+            height: 150px;
+        `}
+        ${mediaQueries(20)`
+            width: 120px;
+            height: 120px;
+        `}
+    }    
 `
 
 const PreLoader = () => {
     
     return (
         <Box>
-            <HDLogo width= {200} height= {200} />
+            <HDLogo width= {180} height= {180} />
         </Box>
     )
 }
