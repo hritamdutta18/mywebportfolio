@@ -10,7 +10,6 @@ const Text= styled.h1`
     right: ${props => props.right};
     bottom: ${props => props.bottom};
     color: ${props => `rgba(${props.theme.textRgba}, 0.1)`};
-    font-size: ${props => props.text === '(Swipe up/down to scroll list)' ? `calc(0.75rem + 1vw) !important` : `calc(4rem + 5vw)`};
     z-index: 0;
 
     ${mediaQueries(30)`
@@ -26,7 +25,6 @@ const BackgroundTitle = (props) => {
             left= {props.left}
             right= {props.right}
             bottom= {props.bottom}
-            text= {props.text}
         >
             {props.text}
         </Text>

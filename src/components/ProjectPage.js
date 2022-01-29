@@ -34,6 +34,15 @@ const Box= styled.div`
     & #warning{
         font-size: 1em !important;
     }
+    ${mediaQueries(65)`            
+        height: 100vh;
+        overflow-x: scroll;
+        scroll-behavior: smooth;
+
+        &::-webkit-scrollbar{
+            display: none;
+        }
+    `}
 `
 const Main= styled(motion.ul)`
     position: fixed;
@@ -46,6 +55,9 @@ const Main= styled(motion.ul)`
     
     ${mediaQueries(65)`       
         top: 30%;
+        height: max-content;
+        position: absolute;
+        transform: none;
     `}
     ${mediaQueries(50)`       
         left: calc(8rem + 9vw);
@@ -105,27 +117,34 @@ const container= {
 const ProjectPage = () => {
 
     const ref= useRef(null);
-    const hdlogo= useRef(null);
+    const hdlogo= useRef(null);    
+    
+    const matchQuery = window.matchMedia("(max-width: 65em)").matches;
+                   
+    const mobileScroll= (s) => {
+        hdlogo.current.style.transform= 'rotate('+ -s+ 'deg)';   
+    }
 
-    useEffect(() => {
+    useEffect(() => { 
 
         const rotateLogo= () =>{
-                ref.current.style.transform= `translateX(${-window.pageYOffset}px)`;
-                return (hdlogo.current.style.transform= 'rotate('+ -window.pageYOffset + 'deg)');
+            ref.current.style.transform= `translateX(${-window.pageYOffset}px)`;
+            return (hdlogo.current.style.transform= 'rotate('+ -window.pageYOffset + 'deg)');            
         }
 
         window.addEventListener('scroll', rotateLogo);
         return () => window.removeEventListener('scroll', rotateLogo);
 
-    }, [])
+    }, []);
+
     
-    const matchQuery = window.matchMedia("(max-width: 60em)").matches;
 
     return (
         <ThemeProvider theme= {DarkTheme}>
             <Suspense fallback= {<PreLoader />}>
                 <MainContainer>
                     <Box
+                        onScroll={matchQuery ? (e) => mobileScroll(e.target.scrollLeft) : null}
                         key="projects"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1, transition: { duration: 1 } }}
@@ -136,7 +155,7 @@ const ProjectPage = () => {
                         <HomeButton />
                         
                         <Main ref= {ref} variants={container} initial='hidden' animate= 'show'>
-                            {
+                            {                                
                                 Project.map(p => 
                                     <ProjectCard key= {p.id} data= {p}/>
                                 )
@@ -148,13 +167,6 @@ const ProjectPage = () => {
                         </Rotate>
 
                         <BackgroundTitle text= "PROJECTS" top= '10%' left= '5%' />
-
-                        {
-                            matchQuery ?
-                            <BackgroundTitle text= "(Swipe up/down to scroll list)" bottom= '2rem' right= '9rem' />
-                            :
-                            <></>
-                        }
                         
                     </Box>
                 </MainContainer> 
