@@ -98,7 +98,7 @@ const SocialIcons = (props) => {
             <Line 
                 color= {props.theme}
                 initial= {{ height: 0 }}
-                animate= {{ height: props.hint === 'projects' ? '1rem' : '5rem' }}
+                animate= {{ height: props.hint === 'projects' ? '1rem' : '4.5rem' }}
                 transition= {{ type: 'spring', duration: 1, delay: 0.8 }}            
             />
         </Icons>
