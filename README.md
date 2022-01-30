@@ -12,5 +12,5 @@
 ## Mobile View
 
 [![hritam-dutta-me-i-Phone-6-7-8-1.png](https://i.postimg.cc/d3HN1mqD/hritam-dutta-me-i-Phone-6-7-8-1.png)](https://postimg.cc/Cn8sr8nV)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 [![hritam-dutta-me-i-Phone-6-7-8.png](https://i.postimg.cc/VkM4QcbJ/hritam-dutta-me-i-Phone-6-7-8.png)](https://postimg.cc/G4LvGVKR)
