@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import React from 'react'
 import styled from 'styled-components'
-import { mediaQueries } from './Themes'
+import { mediaQueries } from '../components/Themes'
 
 
 const Box= styled(motion.div)`
@@ -31,7 +31,7 @@ const Box= styled(motion.div)`
         width: calc(55vw);
     `}
     ${mediaQueries(30)`
-        height: 18rem;        
+        height: 18rem;
         backdrop-filter: none;
     `}
     ${mediaQueries(20)`
@@ -77,7 +77,7 @@ const Title= styled.h3`
         font-size: calc(0.6em + 1vw);
     `}
 `
-const Branch= styled.h4`
+const Position= styled.h4`
     font-weight: 600;
     font-style: italic;
     margin-top: 0.3rem;
@@ -108,16 +108,16 @@ const Item= {
 }
 
 
-const EduComponent = (props) => {
+const ExpComponent = (props) => {
 
-    const {name, branch, marks, date, imgSrc}= props.exp;
+    const {name, position, date, imgSrc}= props.exp;
 
     return (
         <Container variants= {Item} >
             <Box>
                 <Image img= {imgSrc} />
                 <Title>{name}</Title>
-                <Branch>{branch}<br/>{marks}</Branch>
+                <Position>{position}</Position>
                 <br/>
                 <Date>{date}</Date>
             </Box>
@@ -125,4 +125,4 @@ const EduComponent = (props) => {
     )
 }
 
-export default EduComponent
+export default ExpComponent

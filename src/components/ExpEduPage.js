@@ -4,10 +4,10 @@ import img2 from '../assets/Images/experience-wallpaper.jpeg'
 import img1 from '../assets/Images/education-wallpaper.jpg'
 import { Experience } from '../data/ExpData'
 import { Education } from '../data/EducationData'
-import ExpComponent from './ExpComponent'
-import EduComponent from './EduComponent'
+import ExpComponent from '../subComponents/ExpComponent'
+import EduComponent from '../subComponents/EduComponent'
 import { motion } from 'framer-motion'
-import { mediaQueries } from "./Themes";
+import { mediaQueries } from "./Themes"
 import PreLoader from '../subComponents/PreLoader'
 
 // Importing Components using React.lazy
