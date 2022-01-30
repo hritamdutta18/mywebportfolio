@@ -106,7 +106,7 @@ const Projects= styled(NavLink)`
     color: ${props => props.click ? props.theme.body : props.theme.text};
     transition: color 1s ease;
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 2.5rem;
     transform: translate(-50%, -50%) rotate(-90deg);
     text-decoration: none;
