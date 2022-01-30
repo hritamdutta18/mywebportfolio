@@ -49,18 +49,23 @@ export const Linkedin = (props) => {
   )
 }
 
-export const Gmail = (props) => {
+export const Facebook = (props) => {
   return (
     <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 50 50"
-    {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      shapeRendering="geometricPrecision"
+      textRendering="geometricPrecision"
+      imageRendering="optimizeQuality"
+      fillRule="evenodd"
+      clipRule="evenodd"
+      viewBox="0 0 640 640"
+      {...props}
     >
-      <path 
-        fill={props.fill}   
-        style={{transition: 'fill 1s ease'}}     
-        d="M12 23.403V10.389l-.12-.089h-.01L9.14 8.28c-1.67-1.24-4.05-1.18-5.53.28A5.4 5.4 0 0 0 2 12.41v3.602l10 7.391zM38 23.39v.013l10-7.391V12.41c0-1.49-.6-2.85-1.58-3.83a4.17 4.17 0 0 0-5.424-.403L38.12 10.3l-.12.089V23.39zM14 24.868l10.406 7.692a1 1 0 0 0 1.189 0L36 24.868V11.867L25 20l-11-8.133v13.001zM38 25.889V41a1 1 0 0 0 1 1h6.5a2.5 2.5 0 0 0 2.5-2.5V18.497l-10 7.392zM12 25.889 2 18.497V39.5A2.5 2.5 0 0 0 4.5 42H11a1 1 0 0 0 1-1V25.889z" />
-    </svg>
+    <path 
+      fill={props.fill}
+      style={{transition: 'fill 1s ease'}}
+      d="M380.001 120.001h99.993V0h-99.993c-77.186 0-139.986 62.8-139.986 139.986v60h-80.009V320h79.985v320h120.013V320h99.994l19.996-120.013h-119.99v-60.001c0-10.843 9.154-19.996 19.996-19.996v.012z" />
+  </svg>
   )
 }
 
