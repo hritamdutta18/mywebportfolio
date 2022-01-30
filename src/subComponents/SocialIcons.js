@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { Github, Gmail, Instagram, Linkedin } from '../components/AllSvgs'
+import { Github, Facebook, Instagram, Linkedin } from '../components/AllSvgs'
 import styled from 'styled-components'
 import { DarkTheme, mediaQueries } from '../components/Themes'
 import { motion } from 'framer-motion'
@@ -62,8 +62,8 @@ const SocialIcons = (props) => {
                 animate= {{ scale: [0,1,1.5,1] }}
                 transition={{ type: 'spring', duration: 1, delay: 1 }}
             >
-                <NavLink target='_blank' to= {{pathname: "mailto:hritamloyola10@gmail.com"}}>
-                    <Gmail width= {27} height= {27} fill= {props.theme === "dark" ?  DarkTheme.text : DarkTheme.body} />
+                <NavLink target='_blank' to= {{pathname: "https://www.facebook.com/hritamdutta10"}}>
+                    <Facebook width= {27} height= {27} fill= {props.theme === "dark" ?  DarkTheme.text : DarkTheme.body} />
                 </NavLink>
             </motion.div>
 
@@ -72,7 +72,7 @@ const SocialIcons = (props) => {
                 animate= {{ scale: [0,1,1.5,1] }}
                 transition={{ type: 'spring', duration: 1, delay: 1.2 }}
             >
-                <NavLink target='_blank' to= {{pathname: "https://github.com/hritamdutta18/"}}>
+                <NavLink target='_blank' to= {{pathname: "https://www.github.com/hritamdutta18"}}>
                     <Github width= {27} height= {27} fill={props.theme === "dark" ?  DarkTheme.text : DarkTheme.body} />
                 </NavLink>
             </motion.div>
@@ -100,7 +100,7 @@ const SocialIcons = (props) => {
             <Line 
                 color= {props.theme}
                 initial= {{ height: 0 }}
-                animate= {{ height: matchQuery ? '5rem' : '8rem' }}
+                animate= {{ height: props.hint === 'projects' ? '1rem' : (matchQuery ? '5rem' : '8rem') }}
                 transition= {{ type: 'spring', duration: 1, delay: 0.8 }}            
             />
         </Icons>
