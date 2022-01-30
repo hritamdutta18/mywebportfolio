@@ -181,7 +181,7 @@ const AboutPage = () => {
                         Feel free to reach out to me !  
                         <br/> <br/>                    
                         <Resume>
-                            <a href='../assets/Resume.pdf' style= {{textDecoration: 'none'}} download= "Hritam's Resume.pdf">
+                            <a href='Resume.pdf' style= {{textDecoration: 'none'}} download= "Hritam's Resume.pdf">
                                 <Download width= {18} height= {18} fill= 'currentColor' />&nbsp;<span>Download Resume</span>
                             </a>
                         </Resume>
