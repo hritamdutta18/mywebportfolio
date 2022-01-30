@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import { lightTheme, mediaQueries} from './Themes'
 import { Coding, Developer, Github } from './AllSvgs'
-import { HTML, CSS, Javascript, C, JAVA, Reactjs, Node, Express, MongoDB, VSCode, Bootstrap, Heroku } from '../subComponents/Skill-IconsSvgs'
+import { HTML, CSS, Javascript, C, JAVA, Reactjs, Node, Express, MongoDB, VSCode, Bootstrap, Heroku, Vercel } from '../subComponents/Skill-IconsSvgs'
 import PreLoader from '../subComponents/PreLoader'
 
 // Importing Components using React.lazy
@@ -41,6 +41,8 @@ const Box= styled.div`
     `}
 `
 const Main= styled.div`
+    position: relative;
+    top: 2rem;
     border: 2px solid ${props => props.theme.text};
     color: ${props => props.theme.text};
     background-color: ${props => `rgba(${props.theme.bodyRgba}, 0.4)`};
@@ -60,7 +62,7 @@ const Main= styled.div`
         transition: all 0.3s ease;
     }
 
-    ${mediaQueries(62)`
+    ${mediaQueries(60)`
         height: 50vh;
         width: 50vw;
     `}
@@ -174,7 +176,7 @@ const SkillsPage = () => {
                         </Title>
                         <Description>   
                             I am more in love with frontend development. Challenging and creative designs excite me !<br/>
-                            I have quite a bit of experience in backend development as well.                        
+                            I have a bit of experience in backend development as well.                        
                         </Description>
                         <Description>
                             <strong>SKILLS</strong>
@@ -188,11 +190,11 @@ const SkillsPage = () => {
                                         <li><Bootstrap width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20}/>&nbsp;Bootstrap</li>
                                     </div>
                                     <div>                                    
-                                        <li><Reactjs width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20}/>&nbsp;React.js</li>
-                                        <li><Node width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20}/>&nbsp;Node.js</li>                                  
+                                        <li><Reactjs width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20}/>&nbsp;React</li>
+                                        <li><Node width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20}/>&nbsp;Node</li>                                  
                                     </div>
                                     <div>                                     
-                                        <LI theme= {lightTheme}><Express width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20}/>&nbsp;Express.js</LI>  
+                                        <LI theme= {lightTheme}><Express width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20}/>&nbsp;Express</LI>  
                                         <li><MongoDB width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20}/>&nbsp;MongoDB</li>
                                     </div>
                                 </ul>
@@ -205,7 +207,7 @@ const SkillsPage = () => {
                             Repertoire
                         </Title>
                         <Description>   
-                            Being a CSE student, I am also into basic coding and Data Structures &amp; Algorithms.                    
+                            I am also into basic coding and Data Structures &amp; Algorithms. I do use quite a few tools for my coding and development errands.                   
                         </Description>
                         <Description>
                             <strong>LANGUAGES</strong>
@@ -216,15 +218,18 @@ const SkillsPage = () => {
                                     </div>
                                 </ul>
                         </Description>
-                        <Description>   
-                            I do use quite a few tools for my coding &amp; web dev errands.                   
-                        </Description>
                         <Description>
                             <strong>TOOLS</strong>
                                 <ul>
-                                    <li><VSCode width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20}/>&nbsp;Visual Studio Code</li>
-                                    <LI theme= {lightTheme}><Github width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20} />&nbsp;GitHub</LI>
-                                    <li><Heroku width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20}/>&nbsp;Heroku</li>
+                                    <div>
+                                        <li><VSCode width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20}/>&nbsp;VS Code</li>
+                                        <LI theme= {lightTheme}><Github width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20} />&nbsp;GitHub</LI>
+                                    </div>
+                                    
+                                    <div>
+                                        <li><Heroku width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20}/>&nbsp;Heroku</li>
+                                        <LI theme= {lightTheme}><Vercel width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20}/>&nbsp;Vercel</LI>
+                                    </div>
                                 </ul>
                         </Description>
                     </Main>
