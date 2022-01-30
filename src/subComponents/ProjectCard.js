@@ -26,7 +26,7 @@ const Box= styled(motion.li)`
         border: 1px solid ${props => props.theme.text};
     }
 
-    ${mediaQueries(70)`
+    ${mediaQueries(60)`
         height: 35vh;
     `}
     ${mediaQueries(50)`

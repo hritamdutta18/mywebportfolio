@@ -18,7 +18,7 @@ export const Project = [
     {
         id:3,
         name:"SGGES '21 Website",
-        description:"Website for the Virtual International Conference on Smart Grid and Green Energy Systems (SGGES '21), which was organized by VIT Vellore and technically sponsored by IEEE IAS VIT Vellore.",
+        description:"Website for the Virtual International Conference on Smart Grid and Green Energy Systems (SGGES '21), organized by VIT Vellore.",
         tags:["html","css","bootstrap","javascript"],        
         demo:"https://vit.ac.in/SGGES-21/Home_page/index.html",
         github:"https://github.com/ieee-ias-vit/SGGES-21/"

@@ -26,7 +26,7 @@ const MainContainer= styled.div`
 `
 const Box= styled.div`
     background-color: ${props => `rgba(${props.theme.bodyRgba}, 0.8)`};
-    height: 400vh;
+    height: 500vh;
     position: relative;
     display: flex;
     align-items: center;
@@ -151,7 +151,7 @@ const ProjectPage = () => {
                         exit={{ opacity: 0, transition: { duration: 0.5 } }}
                     >
                         <LogoComponent theme= 'dark'/>
-                        <SocialIcons theme= 'dark' key= 'projects' />
+                        <SocialIcons theme= 'dark' hint= 'projects' />
                         <HomeButton />
                         
                         <Main ref= {ref} variants={container} initial='hidden' animate= 'show'>
