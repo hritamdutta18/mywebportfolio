@@ -17,7 +17,7 @@ export const Experience = [
         id: 2,
         name: "Institution of Engineers (India) - VIT",
         position: "Human Resources Head",
-        date: "May 2021 - Present (CC Member since January 2021)",        
+        date: "May 2021 - January 2021",        
         imgSrc: iei
     },
     {
