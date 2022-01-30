@@ -53,8 +53,6 @@ const Line= styled(motion.span)`
 
 const SocialIcons = (props) => {
 
-    const matchQuery = window.matchMedia("(max-width: 40em)").matches;
-
     return (
         <Icons>  
             <motion.div 
@@ -100,7 +98,7 @@ const SocialIcons = (props) => {
             <Line 
                 color= {props.theme}
                 initial= {{ height: 0 }}
-                animate= {{ height: props.hint === 'projects' ? '1rem' : (matchQuery ? '5rem' : '8rem') }}
+                animate= {{ height: props.hint === 'projects' ? '1rem' : '5rem' }}
                 transition= {{ type: 'spring', duration: 1, delay: 0.8 }}            
             />
         </Icons>

@@ -53,6 +53,9 @@ const Main= styled(motion.ul)`
     display: flex;
     color: ${props => props.theme.text};
     
+    ${mediaQueries(75)`       
+        top: 20%;
+    `}
     ${mediaQueries(65)`       
         top: 30%;
         height: max-content;
