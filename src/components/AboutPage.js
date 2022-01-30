@@ -22,19 +22,6 @@ const Box= styled(motion.div)`
     position: relative;
     overflow: hidden;
 `
-// Alternate Animation (if required)
-
-// const float= keyframes`
-//     0%{
-//         transform: translateY(-10px);
-//     }
-//     50%{
-//         transform: translate(15px, 15px);
-//     }
-//     100%{
-//         transform: translateY(-10px);
-//     }
-// `
 
 // Rocket Animation
 const float= keyframes`
@@ -91,16 +78,19 @@ const Main= styled(motion.div)`
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    font-size: calc(0.7rem + 1vw);
+    font-size: calc(0.6rem + 1vw);
     font-family: 'Ubuntu Mono', monospace;
     font-style: italic;
     backdrop-filter: blur(8px);
     text-align: justify;    
     position: absolute;
     right: calc(3rem + 3vw);
-    bottom: 6rem;
+    bottom: calc(2rem + 2vh);
     border-radius: 50px 0 50px 0;
 
+    ${mediaQueries(75)`
+        font-size: calc(0.5rem + 1vw);
+    `};
     ${mediaQueries(40)`
         width: 70vw;
         height: 55vh;
@@ -181,7 +171,7 @@ const AboutPage = () => {
                         Feel free to reach out to me !  
                         <br/> <br/>                    
                         <Resume>
-                            <a href='Resume.pdf' style= {{textDecoration: 'none'}} download= "Hritam's Resume.pdf">
+                            <a href='Resume.pdf' style= {{textDecoration: 'none'}} target= '_blank'>
                                 <Download width= {18} height= {18} fill= 'currentColor' />&nbsp;<span>Download Resume</span>
                             </a>
                         </Resume>
