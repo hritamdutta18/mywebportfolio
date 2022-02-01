@@ -28,12 +28,26 @@ const MainContainer= styled(motion.div)`
     scroll-snap-type: y mandatory;    
     overflow-y: scroll;
 
+    &>*{
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
     &>:nth-child(1){
         background-image: url(${img1});
         z-index: 1;
+
+        ${mediaQueries(30)`
+            background-position: right;
+        `};
     }
     &>:nth-child(2){
         background-image: url(${img2});
+
+        ${mediaQueries(30)`
+            background-position: left;
+        `};
     }
     &>::-webkit-scrollbar {
         display: none;
@@ -50,10 +64,6 @@ const EducationContainer= styled.div`
 
     .center-edu{
         padding-top: 3rem;
-
-        ${mediaQueries(60)`
-            padding-top: 0; 
-        `};
     }
 `
 const ExperienceContainer= styled.div`
@@ -61,17 +71,13 @@ const ExperienceContainer= styled.div`
     width: 100%;
     height: 100vh;
     position: relative;
-    padding-bottom: 5rem;
     overflow-y: scroll;    
     scroll-snap-align: start;
     background-blend-mode: lighten;
 
     .center-exp{
         padding-top: 10rem;
-
-        ${mediaQueries(60)`
-            padding-top: 0; 
-        `};
+        padding-bottom: 5rem;
     }
 `
 const Center= styled.div`
@@ -92,15 +98,20 @@ const Grid= styled.div`
     grid-gap: calc(0.5rem + 2vw);
     position: absolute;    
 
+    ${mediaQueries(70)`
+        top: 0;
+        padding: 8rem 0 5rem 0;
+        grid-template-columns: repeat(2, minmax(calc(10rem + 10vw), 1fr));   
+    `};   
     ${mediaQueries(60)`
-        grid-template-columns: repeat(2, minmax(calc(11rem + 11vw), 1fr));   
-    `};    
+        top: unset; 
+    `};  
     ${mediaQueries(50)`
         grid-template-columns: 100%;   
     `};
     ${mediaQueries(30)`
-        top: 7rem;
-        padding-bottom: 5rem; 
+        padding-top: 0;
+        top: 7rem; 
     `};
 `
 const BGContainer= styled.div`
@@ -121,6 +132,8 @@ const container= {
 
 
 const ExpEduPage = () => {
+
+    document.title= "Education & Experience - Hritam Dutta"
 
     const scrollRef = useRef();
 
@@ -173,6 +186,9 @@ const ExpEduPage = () => {
                     
                     <BGContainer>
                         <BackgroundTitle text= "EDUCATION" top= '5rem' left= { matchQuery ? '3rem' : '5rem' } />
+                    </BGContainer>
+                    <BGContainer>
+                        <BackgroundTitle text= "⬇" bottom= '2rem' right= {matchQuery ? '1rem' : '3rem'} />
                     </BGContainer>
 
                 </EducationContainer>

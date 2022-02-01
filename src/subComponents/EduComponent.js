@@ -25,7 +25,7 @@ const Box= styled(motion.div)`
     }
 
     ${mediaQueries(60)`
-        width: calc(11rem + 11vw);
+        width: calc(10rem + 10vw);
     `}
     ${mediaQueries(50)`
         width: calc(55vw);
