@@ -6,6 +6,7 @@ import rocket from '../assets/Images/rocket.png'
 import { Download } from './AllSvgs'
 import { motion } from 'framer-motion'
 import PreLoader from '../subComponents/PreLoader'
+import Helmet from 'react-helmet'
 
 // Importing Components using React.lazy
 const LogoComponent= lazy (() => import ('../subComponents/LogoComponent'))
@@ -138,8 +139,6 @@ const Resume= styled.button`
 
 const AboutPage = () => {
 
-    document.title= "About - Hritam Dutta"
-
     return (
         <ThemeProvider theme= {DarkTheme}>
             <Suspense fallback= {<PreLoader />}>
@@ -149,6 +148,16 @@ const AboutPage = () => {
                     animate={{ opacity: 1, transition: { duration: 0.5 } }}
                     exit={{ opacity: 0, transition: { duration: 0.5 } }}
                 >
+                    <Helmet>
+                        <title>About - Hritam Dutta</title>
+                        <meta name= 'description' content= 'I am a student @ VIT Vellore and a Web Developer.' />
+                        <meta property= "og:title" content="About - Hritam Dutta" />
+                        <meta
+                            property="og:description"
+                            content="I am a student @ VIT Vellore and a Web Developer."
+                        />
+                    </Helmet>
+                    
                     <LogoComponent theme= 'dark'/>
                     <SocialIcons theme= 'dark'/>
                     <HomeButton />

@@ -4,6 +4,7 @@ import { lightTheme, mediaQueries} from './Themes'
 import { Coding, Developer, Github } from './AllSvgs'
 import { HTML, CSS, Javascript, C, JAVA, Reactjs, Node, Express, MongoDB, VSCode, Bootstrap, Heroku, Vercel } from '../subComponents/Skill-IconsSvgs'
 import PreLoader from '../subComponents/PreLoader'
+import Helmet from 'react-helmet'
 
 // Importing Components using React.lazy
 const LogoComponent= lazy (() => import ('../subComponents/LogoComponent'));
@@ -158,14 +159,23 @@ const LI= styled.li`
 
 const SkillsPage = () => {
 
-    document.title= "Skills - Hritam Dutta"
-
     const matchQuery = window.matchMedia("(max-width: 30em)").matches;
 
     return (
         <ThemeProvider theme= {lightTheme}>
             <Suspense fallback= {<PreLoader />}>
                 <Box>
+
+                    <Helmet>
+                        <title>Skills - Hritam Dutta</title>
+                        <meta name= 'description' content= 'Not much but its honest work, my skillset.' />
+                        <meta property= "og:title" content="Skills - Hritam Dutta" />
+                        <meta
+                            property="og:description"
+                            content="Not much but its honest work, my skillset."
+                        />
+                    </Helmet>
+
                     <LogoComponent theme= 'light'/>
                     <SocialIcons theme= 'light'/>
                     <HomeButton />

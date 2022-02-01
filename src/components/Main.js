@@ -6,6 +6,7 @@ import { HDLogo } from './AllSvgs'
 import Intro from './Intro'
 import { mediaQueries } from './Themes'
 import PreLoader from '../subComponents/PreLoader'
+import Helmet from 'react-helmet'
 
 // Importing Components using React.lazy
 const LogoComponent= lazy (() => import ('../subComponents/LogoComponent'))
@@ -156,8 +157,6 @@ const DarkDiv= styled.div`
 
 const Main = () => {
 
-    document.title= "Hritam Dutta"
-
     const [click, setClick] = useState(false);
     const [path, setPath] = useState("");
 
@@ -174,6 +173,16 @@ const Main = () => {
                 exit= { path === "about" || path === "skills" ? moveY : moveX }
                 transition= {{ duration: 0.5 }}
             >
+                <Helmet>
+                    <title>Hritam Dutta</title>
+                    <meta name= 'description' content= 'Welcome to my web portfolio !' />
+                    <meta property= "og:title" content="Hritam Dutta" />
+                    <meta
+                        property="og:description"
+                        content="Welcome to my web portfolio !"
+                    />
+                </Helmet>
+                
                 <DarkDiv click= {click}/>
 
                 <Container>

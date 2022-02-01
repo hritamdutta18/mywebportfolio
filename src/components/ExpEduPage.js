@@ -9,6 +9,7 @@ import EduComponent from '../subComponents/EduComponent'
 import { motion } from 'framer-motion'
 import { mediaQueries } from "./Themes"
 import PreLoader from '../subComponents/PreLoader'
+import Helmet from 'react-helmet'
 
 // Importing Components using React.lazy
 const LogoComponent= lazy (() => import ('../subComponents/LogoComponent'));
@@ -77,7 +78,10 @@ const ExperienceContainer= styled.div`
 
     .center-exp{
         padding-top: 10rem;
-        padding-bottom: 5rem;
+
+        &>*{            
+            padding-bottom: 4rem;
+        }
     }
 `
 const Center= styled.div`
@@ -133,8 +137,6 @@ const container= {
 
 const ExpEduPage = () => {
 
-    document.title= "Education & Experience - Hritam Dutta"
-
     const scrollRef = useRef();
 
     const onScroll = () => {        
@@ -168,6 +170,15 @@ const ExpEduPage = () => {
                 onScroll={() => onScroll()}
                 ref={scrollRef}
             >     
+                <Helmet>
+                    <title>Education &amp; Experience - Hritam Dutta</title>
+                    <meta name= 'description' content= 'My education and work experience till date.' />
+                    <meta property= "og:title" content="Education &amp; Experience - Hritam Dutta" />
+                    <meta
+                        property="og:description"
+                        content="My education and work experience till date."
+                    />
+                </Helmet>
 
                 <EducationContainer id='edu-container'>    
                     <LogoComponent  />

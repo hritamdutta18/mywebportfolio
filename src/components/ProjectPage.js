@@ -7,6 +7,7 @@ import { HDLogo } from './AllSvgs'
 import { motion } from 'framer-motion'
 import img from '../assets/Images/coder-img.jpg'
 import PreLoader from '../subComponents/PreLoader'
+import Helmet from 'react-helmet'
 
 // Importing Components using React.lazy
 const LogoComponent= lazy (() => import ('../subComponents/LogoComponent'));
@@ -46,7 +47,7 @@ const Box= styled.div`
 `
 const Main= styled(motion.ul)`
     position: fixed;
-    top: 12rem;
+    top: 11rem;
     transform: translate(-30%, 0);
     left: calc(9rem + 9vw);
     height: 40vh;    
@@ -119,8 +120,6 @@ const container= {
 
 const ProjectPage = () => {
 
-    document.title= "Projects - Hritam Dutta"
-
     const ref= useRef(null);
     const hdlogo= useRef(null);    
     
@@ -147,7 +146,18 @@ const ProjectPage = () => {
     return (
         <ThemeProvider theme= {DarkTheme}>
             <Suspense fallback= {<PreLoader />}>
-                <MainContainer>
+                <MainContainer>  
+
+                    <Helmet>
+                        <title>Projects - Hritam Dutta</title>
+                        <meta name= 'description' content= 'Listed here are my projects.' />
+                        <meta property= "og:title" content="Projects - Hritam Dutta" />
+                        <meta
+                            property="og:description"
+                            content="Listed here are my projects."
+                        />
+                    </Helmet>
+
                     <Box
                         onScroll={matchQuery ? (e) => mobileScroll(e.target.scrollLeft) : null}
                         key="projects"
