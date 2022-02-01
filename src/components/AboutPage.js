@@ -137,6 +137,9 @@ const Resume= styled.button`
 `
 
 const AboutPage = () => {
+
+    document.title= "About - Hritam Dutta"
+
     return (
         <ThemeProvider theme= {DarkTheme}>
             <Suspense fallback= {<PreLoader />}>

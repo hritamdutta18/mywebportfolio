@@ -156,6 +156,8 @@ const DarkDiv= styled.div`
 
 const Main = () => {
 
+    document.title= "Hritam Dutta"
+
     const [click, setClick] = useState(false);
     const [path, setPath] = useState("");
 

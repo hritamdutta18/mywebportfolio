@@ -119,6 +119,8 @@ const container= {
 
 const ProjectPage = () => {
 
+    document.title= "Projects - Hritam Dutta"
+
     const ref= useRef(null);
     const hdlogo= useRef(null);    
     

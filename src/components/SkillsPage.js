@@ -158,6 +158,8 @@ const LI= styled.li`
 
 const SkillsPage = () => {
 
+    document.title= "Skills - Hritam Dutta"
+
     const matchQuery = window.matchMedia("(max-width: 30em)").matches;
 
     return (
