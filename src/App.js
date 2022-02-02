@@ -5,7 +5,6 @@ import GlobalStyles from "./globalStyles"
 import { lazy, Suspense } from "react"
 import { AnimatePresence } from "framer-motion"
 import PreLoader from "./subComponents/PreLoader"
-import Helmet from "react-helmet"
 
 // Page Components Imported
 const Main = lazy(() => import("./components/Main"));
@@ -22,15 +21,6 @@ function App() {
   return(
     <>
       <GlobalStyles />
-      <Helmet>
-        <title>Hritam Dutta</title>
-        <meta name= 'description' content= 'Welcome to my web portfolio !' />
-        <meta property= "og:title" content="Hritam Dutta" />
-        <meta
-          property="og:description"
-          content="Welcome to my web portfolio !"
-        />
-      </Helmet>
       <ThemeProvider theme= { lightTheme }>
         <Suspense fallback= {<PreLoader />}>
           <SoundBar />
