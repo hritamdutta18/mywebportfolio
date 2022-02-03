@@ -26,7 +26,7 @@ function App() {
     const error404 = route => { return route === path };
 
     setDisplay(!(pathArray.find(error404) === undefined));
-  }, []);
+  }, [display, location]);
 
   return(
     <>
