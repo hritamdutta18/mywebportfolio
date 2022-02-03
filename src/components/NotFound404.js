@@ -75,18 +75,18 @@ const NotFound404 = () => {
  
   return (
     <ThemeProvider theme= { lightTheme }>
-
-      <Helmet>
-        <title>404 - Page Not Found</title>
-        <meta name= 'description' content= 'The requested page was not found !' />
-        <meta property= "og:title" content="404 - Page Not Found" />
-        <meta
-            property="og:description"
-            content="The requested page was not found !"
-        />
-      </Helmet>
-
       <Box>     
+
+        <Helmet>
+          <title>404 - Page Not Found</title>
+          <meta name= 'description' content= 'The requested page was not found !' />
+          <meta property= "og:title" content="404 - Page Not Found" />
+          <meta
+              property="og:description"
+              content="The requested page was not found !"
+          />
+        </Helmet>
+
         <Headers>
           <h1>404</h1>
           <h2>Page Not Found !</h2>    
@@ -96,8 +96,8 @@ const NotFound404 = () => {
         <HomeRedirect to= "/" >
             <HomeBtn width= {20} height= {20} />&nbsp; Home
         </HomeRedirect>
-      </Box>
 
+      </Box>
     </ThemeProvider>
     )
 };
