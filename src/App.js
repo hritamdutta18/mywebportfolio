@@ -27,6 +27,7 @@ function App() {
 
     setDisplay(!(pathArray.find(error404) === undefined));
   }, [display, location]);
+  
 
   return(
     <>
