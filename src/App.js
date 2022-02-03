@@ -5,6 +5,7 @@ import GlobalStyles from "./globalStyles"
 import { lazy, Suspense, useEffect, useState } from "react"
 import { AnimatePresence } from "framer-motion"
 import PreLoader from "./subComponents/PreLoader"
+import { Helmet } from "react-helmet"
 
 // Page Components Imported
 const Main = lazy(() => import("./components/Main"));
@@ -14,6 +15,7 @@ const SkillsPage = lazy(() => import("./components/SkillsPage"));
 const ProjectPage = lazy(() => import("./components/ProjectPage"));
 const NotFound404 = lazy(() => import("./components/NotFound404"));
 const SoundBar = lazy(() => import("./subComponents/SoundBar"));
+
 
 function App() {
 
@@ -38,7 +40,15 @@ function App() {
             display ? 
             <SoundBar />
             :
-            <></>
+            <Helmet>
+              <title>404 - Page Not Found</title>
+              <meta name= 'description' content= 'The requested page was not found !' />
+              <meta property= "og:title" content="404 - Page Not Found" />
+              <meta
+                  property="og:description"
+                  content="The requested page was not found !"
+              /> 
+            </Helmet>
           }          
 
           {/* For framer-motion animation on page change */}
