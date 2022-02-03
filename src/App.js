@@ -1,4 +1,4 @@
-import { Redirect, Route, Switch, useLocation } from "react-router-dom"
+import { Route, Switch, useLocation } from "react-router-dom"
 import { ThemeProvider } from "styled-components"
 import { lightTheme } from "./components/Themes"
 import GlobalStyles from "./globalStyles"
@@ -51,8 +51,8 @@ function App() {
               <Route exact path= "/projects" component= { ProjectPage } />
               <Route exact path= "/skills" component= { SkillsPage } />
 
-              <Route exact path= "/404" component= { NotFound404 } />
-              <Redirect to="/404" />
+              <Route component= { NotFound404 } />
+              {/* <Redirect to="/404" /> */}
             </Switch>
 
           </AnimatePresence>  
