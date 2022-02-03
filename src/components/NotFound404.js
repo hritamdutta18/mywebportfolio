@@ -81,13 +81,13 @@ const NotFound404 = () => {
 
       <Helmet>
         <title>404 - Page Not Found</title>
-        <meta name= 'description' content= "" style={{ display: 'none'}}/>
+        {/* <meta name= 'description' content= "" style={{ display: 'none'}}/>
         <meta property= "og:title" content="" style={{ display: 'none'}} />
         <meta
             property="og:description"
             content=""
             style={{ display: 'none'}}
-        />
+        /> */}
       </Helmet>
 
       <Box>     
