@@ -73,11 +73,21 @@ const HomeRedirect= styled(NavLink)`
 
 const NotFound404 = () => {
 
+  // document.querySelector("[name= 'description']").remove();
+  // document.querySelector("[property= 'og:description']").remove();
+  // document.querySelector("[property= 'og:title']").remove();
   return (
     <ThemeProvider theme= { lightTheme }>
 
       <Helmet>
         <title>404 - Page Not Found</title>
+        <meta name= 'description' content= "" style={{ display: 'none'}}/>
+        <meta property= "og:title" content="" style={{ display: 'none'}} />
+        <meta
+            property="og:description"
+            content=""
+            style={{ display: 'none'}}
+        />
       </Helmet>
 
       <Box>     
