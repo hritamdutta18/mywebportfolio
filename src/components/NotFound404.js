@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Helmet from 'react-helmet'
 import { NavLink } from 'react-router-dom';
 import styled, { ThemeProvider } from "styled-components"
@@ -72,20 +72,18 @@ const HomeRedirect= styled(NavLink)`
 `
 
 const NotFound404 = () => {
-  useEffect(() => {
-      
-    (document.querySelector(`meta[name= "description"]`) || {remove:()=>0}).remove();
-    (document.querySelector(`meta[propert= "og:description"]`) || {remove:()=>0}).remove();
-    (document.querySelector(`meta[property= "og:title"]`) || {remove:()=>0}).remove();
-
-  }, []);
-
  
   return (
     <ThemeProvider theme= { lightTheme }>
 
       <Helmet>
         <title>404 - Page Not Found</title>
+        <meta name= 'description' content= 'The requested page was not found !' />
+        <meta property= "og:title" content="404 - Page Not Found" />
+        <meta
+            property="og:description"
+            content="The requested page was not found !"
+        />
       </Helmet>
 
       <Box>     
