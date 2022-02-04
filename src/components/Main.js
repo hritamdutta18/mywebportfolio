@@ -84,7 +84,7 @@ const Center= styled.button`
     }
 `
 const Contact= styled(NavLink)`
-    color: ${props => props.theme.text};
+    color: ${props => props.click ? props.theme.body : props.theme.text};
     position: absolute;
     top: 2.5rem;
     right: calc(1rem + 2vw);
@@ -136,6 +136,14 @@ const Skills= styled(NavLink)`
     color: ${props => props.theme.text};
     text-decoration: none;
     z-index: 1;
+
+    // Error Styles (Unresolved)
+    position: unset;
+    left: 0;
+    top: 0;
+    font-size: inherit;
+    font-family: inherit;
+    transition: color 1s ease;
 `
 const DarkDiv= styled.div`
     position: absolute;

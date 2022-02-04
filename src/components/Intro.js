@@ -75,6 +75,7 @@ const SubBox= styled.div`
     width: 50%;
     position: relative;
     display: flex;
+    padding: 0;
 
     .avatar{
         position: absolute;
