@@ -52,8 +52,7 @@ function App() {
               <Route exact path= "/projects" component= { ProjectPage } />
               <Route exact path= "/skills" component= { SkillsPage } />
 
-              <Route component= { NotFound404 } />
-              {/* <Redirect to="/404" /> */}
+              <Route path= "*" component= { NotFound404 } status={404} />
             </Switch>
 
           </AnimatePresence>  

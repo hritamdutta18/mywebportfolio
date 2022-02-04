@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom'
 import styled, { ThemeProvider } from "styled-components"
 import { lightTheme } from "./Themes"
 import { HomeBtn } from "./AllSvgs"
-import thumbnail from '../assets/share-imgs/notfound.PNG'
 import MetaTag from './MetaTag'
 
 
@@ -57,6 +56,7 @@ const HomeRedirect= styled(NavLink)`
   font-family: 'Karla', sans-serif;
   margin-top: 4rem;
   display: flex;
+  align-items: center;
   z-index: 1;
   
   position: absolute;
@@ -78,21 +78,16 @@ const NotFound404 = () => {
     <ThemeProvider theme= { lightTheme }>
       <Box>     
 
-        <MetaTag 
-          title= "404 - Page Not Found"
-          description= "The requested page was not found !"
-          imageUrl= {thumbnail}
-          imageAlt= "This image shows that 404 error page, i.e., the requested page was not found."                    
-        />
+        <MetaTag title= "404 - Page Not Found" />
 
         <Headers>
           <h1>404</h1>
           <h2>Page Not Found !</h2>    
-          <p>The page you requested doesn't exist or has its name changed.</p>      
+          <p>This is not the page you're looking for.</p>      
         </Headers>
 
         <HomeRedirect to= "/" >
-            <HomeBtn width= {20} height= {20} />&nbsp; Home
+            <HomeBtn width= {20} height= {20} />&nbsp; Go Back
         </HomeRedirect>
 
       </Box>
