@@ -1,9 +1,10 @@
-import React from 'react';
-import Helmet from 'react-helmet'
-import { NavLink } from 'react-router-dom';
+import React from 'react'
+import { NavLink } from 'react-router-dom'
 import styled, { ThemeProvider } from "styled-components"
 import { lightTheme } from "./Themes"
 import { HomeBtn } from "./AllSvgs"
+import thumbnail from '../assets/share-imgs/notfound.PNG'
+import MetaTag from './MetaTag'
 
 
 const Box= styled.div`
@@ -77,15 +78,12 @@ const NotFound404 = () => {
     <ThemeProvider theme= { lightTheme }>
       <Box>     
 
-        <Helmet>
-          <title>404 - Page Not Found</title>
-          <meta name= 'description' content= 'The requested page was not found !' />
-          <meta property= "og:title" content="404 - Page Not Found" />
-          <meta
-              property="og:description"
-              content="The requested page was not found !"
-          />
-        </Helmet>
+        <MetaTag 
+          title= "404 - Page Not Found"
+          description= "The requested page was not found !"
+          imageUrl= {thumbnail}
+          imageAlt= "This image shows that 404 error page, i.e., the requested page was not found."                    
+        />
 
         <Headers>
           <h1>404</h1>

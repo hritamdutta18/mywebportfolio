@@ -4,7 +4,8 @@ import { lightTheme, mediaQueries} from './Themes'
 import { Coding, Developer, Github } from './AllSvgs'
 import { HTML, CSS, Javascript, C, JAVA, Reactjs, Node, Express, MongoDB, VSCode, Bootstrap, Heroku, Vercel } from '../subComponents/Skill-IconsSvgs'
 import PreLoader from '../subComponents/PreLoader'
-import Helmet from 'react-helmet'
+import thumbnail from '../assets/share-imgs/skills.PNG'
+import MetaTag from './MetaTag'
 
 // Importing Components using React.lazy
 const LogoComponent= lazy (() => import ('../subComponents/LogoComponent'));
@@ -166,16 +167,13 @@ const SkillsPage = () => {
             <Suspense fallback= {<PreLoader />}>
                 <Box>
 
-                    <Helmet>
-                        <title>Skills - Hritam Dutta</title>
-                        <meta name= 'description' content= 'Not much but its honest work, my skillset.' />
-                        <meta property= "og:title" content="Skills - Hritam Dutta" />
-                        <meta
-                            property="og:description"
-                            content="Not much but its honest work, my skillset."
-                        />
-                    </Helmet>
-
+                    <MetaTag 
+                        title= "Skills - Hritam Dutta"
+                        description= "Not much but its honest work; my skillset."
+                        imageUrl= {thumbnail}
+                        imageAlt= "This image shows the skills page of the portfolio"                    
+                    />
+                    
                     <LogoComponent theme= 'light'/>
                     <SocialIcons theme= 'light'/>
                     <HomeButton />

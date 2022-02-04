@@ -6,7 +6,8 @@ import rocket from '../assets/Images/rocket.png'
 import { Download } from './AllSvgs'
 import { motion } from 'framer-motion'
 import PreLoader from '../subComponents/PreLoader'
-import Helmet from 'react-helmet'
+import MetaTag from './MetaTag'
+import thumbnail from '../assets/share-imgs/about.PNG'
 
 // Importing Components using React.lazy
 const LogoComponent= lazy (() => import ('../subComponents/LogoComponent'))
@@ -148,15 +149,12 @@ const AboutPage = () => {
                     animate={{ opacity: 1, transition: { duration: 0.5 } }}
                     exit={{ opacity: 0, transition: { duration: 0.5 } }}
                 >
-                    <Helmet>
-                        <title>About - Hritam Dutta</title>
-                        <meta name= 'description' content= 'I am a student @ VIT Vellore and a Web Developer.' />
-                        <meta property= "og:title" content="About - Hritam Dutta" />
-                        <meta
-                            property="og:description"
-                            content="I am a student @ VIT Vellore and a Web Developer."
-                        />
-                    </Helmet>
+                    <MetaTag 
+                        title= "About - Hritam Dutta"
+                        description= "I am a student @ VIT Vellore and a Web Developer."
+                        imageUrl= {thumbnail}
+                        imageAlt= "This image shows the about page of the portfolio"                    
+                    />
                     
                     <LogoComponent theme= 'dark'/>
                     <SocialIcons theme= 'dark'/>

@@ -9,7 +9,8 @@ import EduComponent from '../subComponents/EduComponent'
 import { motion } from 'framer-motion'
 import { mediaQueries } from "./Themes"
 import PreLoader from '../subComponents/PreLoader'
-import Helmet from 'react-helmet'
+import thumbnail from '../assets/share-imgs/eduexp.PNG'
+import MetaTag from './MetaTag'
 
 // Importing Components using React.lazy
 const LogoComponent= lazy (() => import ('../subComponents/LogoComponent'));
@@ -169,16 +170,13 @@ const ExpEduPage = () => {
                 }}
                 onScroll={() => onScroll()}
                 ref={scrollRef}
-            >     
-                <Helmet>
-                    <title>Education &amp; Experience - Hritam Dutta</title>
-                    <meta name= 'description' content= 'My education and work experience till date.' />
-                    <meta property= "og:title" content="Education &amp; Experience - Hritam Dutta" />
-                    <meta
-                        property="og:description"
-                        content="My education and work experience till date."
-                    />
-                </Helmet>
+            >    
+                <MetaTag 
+                    title= "Education &amp; Experience - Hritam Dutta"
+                    description= "My education and work experience till date."
+                    imageUrl= {thumbnail}
+                    imageAlt= "This image shows the education and experience page of the portfolio"                    
+                />
 
                 <EducationContainer id='edu-container'>    
                     <LogoComponent  />

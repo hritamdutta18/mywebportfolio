@@ -7,7 +7,8 @@ import { HDLogo } from './AllSvgs'
 import { motion } from 'framer-motion'
 import img from '../assets/Images/coder-img.jpg'
 import PreLoader from '../subComponents/PreLoader'
-import Helmet from 'react-helmet'
+import thumbnail from '../assets/share-imgs/projects.PNG'
+import MetaTag from './MetaTag'
 
 // Importing Components using React.lazy
 const LogoComponent= lazy (() => import ('../subComponents/LogoComponent'));
@@ -148,16 +149,12 @@ const ProjectPage = () => {
             <Suspense fallback= {<PreLoader />}>
                 <MainContainer>  
 
-                    <Helmet>
-                        <title>Projects - Hritam Dutta</title>
-                        <meta name= 'description' content= 'Listed here are my projects.' />
-                        <meta property= "og:title" content="Projects - Hritam Dutta" />
-                        <meta
-                            property="og:description"
-                            content="Listed here are my projects."
-                        />
-                    </Helmet>
-
+                    <MetaTag 
+                        title= "Projects - Hritam Dutta"
+                        description= "Listed here are my projects."
+                        imageUrl= {thumbnail}
+                        imageAlt= "This image shows the projects page of the portfolio"                    
+                    />
                     <Box
                         onScroll={matchQuery ? (e) => mobileScroll(e.target.scrollLeft) : null}
                         key="projects"

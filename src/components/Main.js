@@ -6,7 +6,8 @@ import { HDLogo } from './AllSvgs'
 import Intro from './Intro'
 import { mediaQueries } from './Themes'
 import PreLoader from '../subComponents/PreLoader'
-import Helmet from 'react-helmet'
+import thumbnail from '../assets/share-imgs/home.PNG'
+import MetaTag from './MetaTag'
 
 // Importing Components using React.lazy
 const LogoComponent= lazy (() => import ('../subComponents/LogoComponent'))
@@ -173,16 +174,13 @@ const Main = () => {
                 exit= { path === "about" || path === "skills" ? moveY : moveX }
                 transition= {{ duration: 0.5 }}
             >
-                <Helmet>
-                    <title>Hritam Dutta</title>
-                    <meta name= 'description' content= 'Welcome to my web portfolio !' />
-                    <meta property= "og:title" content="Hritam Dutta" />
-                    <meta
-                        property="og:description"
-                        content="Welcome to my web portfolio !"
-                    />
-                </Helmet>
-                
+                <MetaTag 
+                    title= "Hritam Dutta"
+                    description= "Welcome to my web portfolio !"
+                    imageUrl= {thumbnail}
+                    imageAlt= "This image shows the home page of the portfolio"                    
+                />
+
                 <DarkDiv click= {click}/>
 
                 <Container>
