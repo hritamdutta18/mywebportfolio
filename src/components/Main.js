@@ -281,7 +281,11 @@ const Main = () => {
                             </motion.h2>
                         </About>
 
-                        <Skills to= "/skills" >
+                        <Skills 
+                            onClick={ () => setClick(false) }
+                            click= { matchQuery ? +false : +click }  
+                            to= "/skills" 
+                        >
                             <motion.h2
                                 onClick={ () => setPath("skills") }
                                 initial= {{
