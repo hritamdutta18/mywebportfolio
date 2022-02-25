@@ -7,7 +7,7 @@ import { AnimatePresence } from "framer-motion"
 import PreLoader from "./subComponents/PreLoader"
 
 // Page Components Imported
-const Main = lazy(() => import("./components/Main"));
+const HomePage = lazy(() => import("./components/HomePage"));
 const AboutPage = lazy(() => import("./components/AboutPage"));
 const ExpEduPage = lazy(() => import("./components/ExpEduPage"));
 const SkillsPage = lazy(() => import("./components/SkillsPage"));
@@ -46,7 +46,7 @@ function App() {
           <AnimatePresence exitBeforeEnter>
 
             <Switch location= {location} key= {location.pathname}>
-              <Route exact path= "/" component= { Main } />
+              <Route exact path= "/" component= { HomePage } />
               <Route exact path= "/about" component= { AboutPage } />
               <Route exact path= "/education-experience" component= { ExpEduPage } />
               <Route exact path= "/projects" component= { ProjectPage } />

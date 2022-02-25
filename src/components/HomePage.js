@@ -19,7 +19,7 @@ const MainContainer= styled(motion.div)`
     background: ${props => props.theme.body};
     width: 100vw;
     height: 100vh;
-    overflow-x: hidden;
+    overflow: hidden;
     position: relative;
 
     h2, h3, h4, h5, h6 {
@@ -47,15 +47,14 @@ const rotateLogo = keyframes`
         transform: rotate(360deg);
     }
 `
-const Center= styled.button`
+const Logo= styled(motion.div)`
     position: absolute;
-    top: ${props => props.click ? '85%' : '50%'};
-    left: ${props => props.click ? '92%' : '50%'};
+    top: 85%;
+    left: 92%;
     transform: translate(-50%, -50%);
     border: none;
     outline: none;
     background-color: transparent;
-    cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -67,32 +66,36 @@ const Center= styled.button`
         fill: ${props => props.theme.text};
     }
 
-    &>:last-child{
-        padding-top: 1rem;    
-        display: ${props => props.click ? 'none' : 'inline-block'};    
+    &>:last-child{   
+        display: inline-block;    
     }
 
     @media only screen and (max-width: 50em){
-        top: ${props => props.click ? "90%" : "50%"};
-        left: ${props => props.click ? "90%" : "50%"};
-        width: ${props => props.click ? "80px" : "150px"};
-        height: ${props => props.click ? "80px" : "150px"};
+        top: 92%;
+        left: 90%;
+        width: 100px;
+        height: 100px;
     }
+
     @media only screen and (max-width: 30em) {
-        width: ${props => props.click ? "40px" : "150px"};
-        height: ${props => props.click ? "40px" : "150px"};
+        width: 40px;
+        height: 40px;
     }
 `
 const Contact= styled(NavLink)`
-    color: ${props => props.click ? props.theme.body : props.theme.text};
+    color: ${props => props.theme.text};
     position: absolute;
     top: 2.5rem;
     right: calc(1rem + 2vw);
     text-decoration: none;
-    z-index: 1;        
+    z-index: 1;       
+    
+    @media only screen and (max-width: 50em){  
+        color: ${props => props.theme.body};  
+    }
 `
 const ExpEdu= styled(NavLink)`
-    color: ${props => props.click ? props.theme.body : props.theme.text};
+    color: ${props => props.theme.text};
     position: absolute;
     top: 50%;
     right: 2rem;
@@ -101,11 +104,12 @@ const ExpEdu= styled(NavLink)`
     z-index: 1;
 
     @media only screen and (max-width: 50em){  
-        text-shadow: ${props => props.click ? `rgb(0 0 0) 0px 0px 4px` : `none`};
+        color: ${props => props.theme.body};  
+        text-shadow: rgb(0 0 0) 0px 0px 4px;
     }
 `
 const Projects= styled(NavLink)`
-    color: ${props => props.click ? props.theme.body : props.theme.text};
+    color: ${props => props.theme.body};
     transition: color 1s ease;
     position: absolute;
     top: 45%;
@@ -115,7 +119,7 @@ const Projects= styled(NavLink)`
     z-index: 1;
 
     @media only screen and (max-width: 50em){  
-        text-shadow: ${props => props.click ? `rgb(0 0 0) 0px 0px 4px` : `none`};
+        text-shadow: rgb(0 0 0) 0px 0px 4px;
     }
 `
 const BottomBar= styled.div`
@@ -127,10 +131,14 @@ const BottomBar= styled.div`
     justify-content: space-evenly;
 `
 const About= styled(NavLink)`
-    color: ${props => props.click ? props.theme.body : props.theme.text};
+    color: ${props => props.theme.body};
     transition: color 1s ease;
     text-decoration: none;
     z-index: 1;
+
+    @media only screen and (max-width: 50em){  
+        color: ${props => props.theme.text}; 
+    }
 `
 const Skills= styled(NavLink)`
     color: ${props => props.theme.text};
@@ -138,6 +146,7 @@ const Skills= styled(NavLink)`
     z-index: 1;
 
     // Error Styles (Unresolved)
+
     position: unset;
     left: 0;
     top: 0;
@@ -145,28 +154,25 @@ const Skills= styled(NavLink)`
     font-family: inherit;
     transition: color 1s ease;
 `
-const DarkDiv= styled.div`
+const DarkDiv= styled(motion.div)`
     position: absolute;
     top: 0;
     background-color: ${props => props.theme.text};
     bottom: 0;
     right: 50%;
-    width: ${props => props.click ? '50%' : "0%"};
-    height: ${props => props.click ? '100%' : "0%"};
+    width: 50%;
+    height: 100%;
     z-index: 1;
-    transition: height 0.5s ease, width 1s ease 0.5s;
 
     @media only screen and (max-width: 50em){  
-        width: ${props => props.click ? '100%' : "0%"};
-        height: ${props => props.click ? '50%' : "0%"};
+        width: 100%;
+        height: 50%;
         right: 0;
-        transition: width 0.5s ease 0s, height 1s ease 0.5s;
     }
 `
 
-const Main = () => {
+const HomePage = () => {
 
-    const [click, setClick] = useState(false);
     const [path, setPath] = useState("");
 
     const moveY = { y: "-100%" };
@@ -189,24 +195,29 @@ const Main = () => {
                     imageAlt= "This image shows the home page of the portfolio"                    
                 />
 
-                <DarkDiv click= {click}/>
+                <DarkDiv 
+                    initial= { matchQuery ? {height: 0} : {width: 0} }
+                    animate= {matchQuery ? {height: '50%'} : {width: '50%'}}
+                    transition= {{ type: 'spring', duration: 2, delay: 0.5}}                
+                />
 
                 <Container>
                     <HomeButton />
-                    <LogoComponent theme= {click ? 'dark' : 'light'}/>
-                    <SocialIcons theme= { matchQuery ? 'light' : (click ? 'dark' : 'light') } />
+                    <LogoComponent theme= {'dark'}/>
+                    <SocialIcons theme= { matchQuery ? 'light' : 'dark' } />
                     
-                    <Center click= {click}>                         
+                    <Logo
+                        initial= {{opacity: 0}}
+                        animate= {{opacity: 1}}
+                        transition= {{ duration: 1, delay: 1}}
+                    >                         
                         <HDLogo 
-                            onClick= { () => setClick (!click) } 
-                            width= { matchQuery ? (click ? 80 : 150) : (click ? 120 : 220) } 
-                            height= { matchQuery ? (click ? 80 : 150) : (click ? 120 : 220) } 
+                            width= { matchQuery ? 100 : 120 } 
+                            height= { matchQuery ? 100 : 120 } 
                         />                        
-                        <span>Click here !</span>
-                    </Center>
+                    </Logo>
                    
                     <Contact 
-                        click= { matchQuery ? +click : +false } 
                         target= "_blank" 
                         to= {{ pathname: "mailto:hritamloyola10@gmail.com" }}
                     >
@@ -226,8 +237,7 @@ const Main = () => {
                         </motion.h2>
                     </Contact>                                
                    
-                    <ExpEdu
-                        click= { matchQuery ? +click : +false } 
+                    <ExpEdu 
                         onClick= { () => setPath ("education-experience") } 
                         to= "/education-experience" >
                         <motion.h2
@@ -247,7 +257,6 @@ const Main = () => {
                     </ExpEdu>                     
                     
                     <Projects 
-                        click= {+click} 
                         to= "/projects" 
                         style= {{ left: matchQuery ? '1.75rem' : '2.5rem'}} >
                         <motion.h2
@@ -268,9 +277,7 @@ const Main = () => {
                     </Projects>
 
                     <BottomBar>
-                        <About                             
-                            onClick={ () => setClick(false) }
-                            click= { matchQuery ? +false : +click }  
+                        <About                               
                             to= "/about" >
                             <motion.h2
                                 onClick={ () => setPath("about") }
@@ -290,8 +297,6 @@ const Main = () => {
                         </About>
 
                         <Skills 
-                            onClick={ () => setClick(false) }
-                            click= { matchQuery ? +false : +click }  
                             to= "/skills" 
                         >
                             <motion.h2
@@ -314,10 +319,10 @@ const Main = () => {
                     </BottomBar>    
                 </Container>
 
-                {click ? <Intro /> : null}
+                <Intro />
             </MainContainer>
         </Suspense>        
     )
 }
 
-export default Main
+export default HomePage
