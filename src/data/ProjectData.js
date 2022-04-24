@@ -28,7 +28,7 @@ export const Project = [
         name:"IEEE IAS Website",
         description:"Official website of IEEE IAS VIT Vellore, made by members of the chapter.",
         tags:["html","css","bootstrap","javascript","firebase"],        
-        demo:"https://ieeeiasvit.in/",
+        demo:"https://hritamdutta18.github.io/IEEE-IAS-Website-2021/",
         github:"https://github.com/hritamdutta18/IEEE-IAS-Website-2021"       
     },
     {
