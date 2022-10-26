@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import { lightTheme, mediaQueries} from './Themes'
 import { Coding, Developer, Github } from './AllSvgs'
-import { HTML, CSS, Javascript, C, JAVA, Reactjs, Node, Express, MongoDB, VSCode, Bootstrap, Heroku, Vercel } from '../subComponents/Skill-IconsSvgs'
+import { HTML, CSS, Javascript, C, JAVA, Reactjs, Node, Express, MongoDB, VSCode, Bootstrap, Vercel } from '../subComponents/Skill-IconsSvgs'
 import PreLoader from '../subComponents/PreLoader'
 import thumbnail from '../assets/share-imgs/skills.PNG'
 import MetaTag from './MetaTag'
@@ -237,7 +237,6 @@ const SkillsPage = () => {
                                     </div>
                                     
                                     <div>
-                                        <li><Heroku width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20}/>&nbsp;Heroku</li>
                                         <LI theme= {lightTheme}><Vercel width= {matchQuery ? 15 : 20} height= {matchQuery ? 15 : 20}/>&nbsp;Vercel</LI>
                                     </div>
                                 </ul>
