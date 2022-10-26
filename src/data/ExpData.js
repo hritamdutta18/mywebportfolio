@@ -1,6 +1,7 @@
 import ieee from '../assets/Images/experience/ieee-ias-logo.png'
 import iei from '../assets/Images/experience/iei-logo.jpg'
 import unschool from '../assets/Images/experience/unschool-logo.png'
+import tsl from '../assets/Images/experience/tsl-logo.png'
 // import fidelity from '../assets/Images/experience/fidelity-logo.png'
 import protal from '../assets/Images/experience/protal-logo.svg'
 
@@ -33,13 +34,19 @@ export const Experience = [
         position: "Frontend (React) Developer",
         date:"August 2021 - November 2021",
         imgSrc: protal
-    }
-    // ,
+    },
+    {
+        id: 5,
+        name: "Tata Steel",
+        position: "Vocational Trainee",
+        date: "October 2022 - November 2022",
+        imgSrc: tsl
+    }//,
     // {
-    //     id: 5,
+    //     id: 6,
     //     name: "Fidelity Investments",
-    //     position: "SDE Intern",
-    //     date: "May 2022 - July 2022",
+    //     position: "Executive Graduate Trainee",
+    //     date: "January 2023 - Present",
     //     imgSrc: fidelity
     // }  
 ] 

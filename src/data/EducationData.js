@@ -7,7 +7,7 @@ export const Education = [
         id: 1,
         name: "Vellore Institute of Technology, Vellore",
         branch: "B.Tech CSE with specialization in IoT",
-        marks: "CGPA - 9.16",
+        marks: "CGPA - 9.03",
         date: "July 2019 - Present",
         imgSrc: vit
     },
