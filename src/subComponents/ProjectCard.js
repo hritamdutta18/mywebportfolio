@@ -157,9 +157,14 @@ const ProjectCard = (props) => {
                         <External className="ext" fill="currentColor" />
                     </Link>
                 }
-                <Git to= {{pathname: `${github}`}} target="_blank">
-                    <Github width= { matchQuery ? 25 : 30 } height= { matchQuery ? 25 : 30 } />
-                </Git>
+                {
+                    github === "" ?
+                    <></>
+                    :                    
+                    <Git to= {{pathname: `${github}`}} target="_blank">
+                        <Github width= { matchQuery ? 25 : 30 } height= { matchQuery ? 25 : 30 } />
+                    </Git>
+                }                
             </Footer>
         </Box>
     )
