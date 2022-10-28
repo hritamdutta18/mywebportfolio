@@ -69,7 +69,7 @@ export const Project = [
         name:"CoviPrec",
         description:"This is my first ever website ! It enlists a few articles & precautions regarding COVID-19, along with a form for contact details. No back-end functionalities are included.",
         tags:["html","css","javascript"],        
-        demo:"https://hritamdutta18.github.io/covid_prec/webpage",
+        demo:"https://hritamdutta18.github.io/covid_prec/webpage.html",
         github:"https://github.com/hritamdutta18/covid_prec"        
     }  
 ] 
