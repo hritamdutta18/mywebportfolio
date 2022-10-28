@@ -1,4 +1,4 @@
-# Portfolio Website
+# My Portfolio Website
 
 > This is my portfolio <a href= "https://hritam-dutta.me" target= "_blank">website</a> made using React and hosted via a custom domain, on Vercel.
 
