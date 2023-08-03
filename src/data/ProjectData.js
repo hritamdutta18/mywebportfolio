@@ -1,7 +1,7 @@
 export const Project = [
     {
         id:1,
-        name:"Ethereum-based E-Voting Web Application",
+        name:"Smart Material Gatepass System",
         description:"A system that helps track the movement/exchange of materials via gate-pass, acts as a digital receipt for the complete transaction.",
         tags:["react", "html", "css", "javascript"],        
         demo:"https://gatepass-hritamdutta18.vercel.app/",
