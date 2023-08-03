@@ -172,13 +172,12 @@ const AboutPage = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1, transition: { duration: 1, delay: 1 } }}
                     >
-                        Currently, I am a B.Tech student at VIT Vellore pursuing Computer Science &amp; Engineering with specialization in IoT.   
-                        I am a full-stack web developer specializing in MERN Stack.
-                        I am also interested in software development with proficiency in C and JAVA.
+                        I am a software engineer at Fidelity Investments in Bengaluru.   
+                        A freshie in the corporate realm, I am primarily a full-stack web developer.
                         <br/> <br/>
-                        I am an avid badminton player, a FIFA fanatic and also a cricket enthusiast. Music is my escape.
+                        I am also an avid badminton player, a FIFA fanatic and also a cricket enthusiast. Music is my escape.
                         <br/> <br/>
-                        Feel free to reach out to me !  
+                        Feel free to reach out to me!  
                         <br/> <br/>                    
                         <Resume>
                             <a href='Resume.pdf' style= {{textDecoration: 'none'}} target= '_blank'>
