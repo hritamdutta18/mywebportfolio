@@ -2,7 +2,7 @@ import ieee from '../assets/Images/experience/ieee-ias-logo.png'
 import iei from '../assets/Images/experience/iei-logo.jpg'
 import unschool from '../assets/Images/experience/unschool-logo.png'
 import tsl from '../assets/Images/experience/tsl-logo.png'
-// import fidelity from '../assets/Images/experience/fidelity-logo.png'
+import fidelity from '../assets/Images/experience/fidelity-logo.png'
 import protal from '../assets/Images/experience/protal-logo.svg'
 
 
