@@ -41,12 +41,19 @@ export const Experience = [
         position: "Vocational Trainee",
         date: "October 2022 - November 2022",
         imgSrc: tsl
-    }//,
-    // {
-    //     id: 6,
-    //     name: "Fidelity Investments",
-    //     position: "Executive Graduate Trainee",
-    //     date: "January 2023 - Present",
-    //     imgSrc: fidelity
-    // }  
+    },
+    {
+        id: 6,
+        name: "Fidelity Investments",
+        position: "Full Stack SWE Intern",
+        date: "February 2023 - July 2023",
+        imgSrc: fidelity
+    },  
+    {
+        id: 7,
+        name: "Fidelity Investments",
+        position: "Executive Graduate Trainee",
+        date: "August 2023 - Present",
+        imgSrc: fidelity
+    }  
 ] 
