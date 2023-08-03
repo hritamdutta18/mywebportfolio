@@ -1,6 +1,6 @@
 # My Portfolio Website
 
-> This is my portfolio <a href= "https://hritam-dutta.me" target= "_blank">website</a> made using React and hosted via a custom domain, on Vercel.
+> This is my portfolio <a href= "https://hritamdutta-hritamdutta18.vercel.app/" target= "_blank">website</a> made using React and hosted via a custom domain, on Vercel.
 
 ## Desktop View
 
